@@ -1,14 +1,32 @@
-// Theme settings with sensible defaults. Can be configured via `@use 'settings' with (...)`.
-$bg: #ffffff !default;
-$text: #0f1724 !default;
-$muted: #6b7280 !default;
-$link: #0b5fff !default;
-$accent: #0b5fff !default;
-$accent-contrast: #ffffff !default;
-$border: #e6e9ee !default;
-$surface: #f8fafc !default;
+@use 'sass:color' as color;
 
-// spacing scale
+$font-family-sans-serif: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif !default;
+$font-family-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !default;
+$font-family: $font-family-sans-serif !default;
+$line-height: 1.5 !default;
+$font-weight: 400 !default;
+$font-size: 100% !default;
+
+$text-underline-offset: 0.1rem !default;
+$border-radius: 0.25rem !default;
+$border-width: 0.0625rem !default;
+$outline-width: 0.125rem !default;
+$transition: 0.2s ease-in-out !default;
+
+$spacing: 1rem !default;
+$typography-spacing-vertical: 1rem !default;
+$block-spacing-vertical: $spacing !default;
+$block-spacing-horizontal: $spacing !default;
+$grid-column-gap: $spacing !default;
+$grid-row-gap: $spacing !default;
+$form-element-spacing-vertical: 0.75rem !default;
+$form-element-spacing-horizontal: 1rem !default;
+
+$nav-element-spacing-vertical: 1rem !default;
+$nav-element-spacing-horizontal: 0.5rem !default;
+$nav-link-spacing-vertical: 0.5rem !default;
+$nav-link-spacing-horizontal: 0.5rem !default;
+
 $space-xxs: 0.25rem !default;
 $space-xs: 0.5rem !default;
 $space-sm: 0.75rem !default;
@@ -16,13 +34,100 @@ $space-md: 1rem !default;
 $space-lg: 1.5rem !default;
 $space-xl: 2rem !default;
 
-// radii & container
+$radius-sm: 6px !default;
+$radius-md: 10px !default;
+$radius-lg: 12px !default;
+
+$trans-fast: 0.12s !default;
+$trans-md: 0.18s !default;
+
+$container-max: 80rem !default;
+
+$bg: #ffffff !default;
+$color: #373c44 !default;
+$muted: #646b79 !default;
+$muted-border: rgb(231, 234, 239.5) !default;
+$link: #0172ad !default;
+$accent: #0172ad !default;
+$accent-hover: #015887 !default;
+$accent-focus: rgba(2, 154, 232, 0.5) !default;
+$accent-contrast: #ffffff !default;
+$border: #cfd5e2 !default;
+$surface: #f8fafc !default;
+$selection: rgba(2, 154, 232, 0.25) !default;
+
+$h1-color: #2d3138 !default;
+$h2-color: #373c44 !default;
+$h3-color: #424751 !default;
+$h4-color: #4d535e !default;
+$h5-color: #5c6370 !default;
+$h6-color: #646b79 !default;
+
+$mark-bg: rgb(252.5, 230.5, 191.5) !default;
+$mark-color: #0f1114 !default;
+$ins-color: rgb(28.5, 105.5, 84) !default;
+$del-color: rgb(136, 56.5, 53) !default;
+
+$code-bg: rgb(243, 244.5, 246.75) !default;
+$code-color: #646b79 !default;
+$code-kbd-bg: $color !default;
+$code-kbd-color: $bg !default;
+
+$form-element-bg: rgb(251, 251.5, 252.25) !default;
+$form-element-border: #cfd5e2 !default;
+$form-element-color: #23262c !default;
+$form-element-placeholder: $muted !default;
+$form-element-active-bg: #fff !default;
+$form-element-active-border: $accent !default;
+$form-element-disabled-opacity: 0.5 !default;
+$form-element-invalid: rgb(183.5, 105.5, 106.5) !default;
+$form-element-invalid-active: rgb(200.25, 79.25, 72.25) !default;
+$form-element-valid: rgb(76, 154.5, 137.5) !default;
+$form-element-valid-active: rgb(39, 152.75, 118.75) !default;
+
+$switch-bg: #bfc7d9 !default;
+$switch-checked-bg: $accent !default;
+$switch-color: #fff !default;
+
+$range-border: #dfe3eb !default;
+$range-active-border: #bfc7d9 !default;
+$range-thumb-border: $bg !default;
+$range-thumb-color: #525f7a !default;
+$range-thumb-active-color: $accent !default;
+
+$accordion-border: $muted-border !default;
+$accordion-active-summary: $accent-hover !default;
+$accordion-close-summary: $color !default;
+$accordion-open-summary: $muted !default;
+
+$card-bg: $bg !default;
+$card-border: $muted-border !default;
+$card-sectioning-bg: rgb(251, 251.5, 252.25) !default;
+
+$dropdown-bg: #fff !default;
+$dropdown-border: #eff1f4 !default;
+$dropdown-hover-bg: #eff1f4 !default;
+
+$progress-bg: #dfe3eb !default;
+$progress-color: $accent !default;
+
+$tooltip-bg: #181c25 !default;
+$tooltip-color: #fff !default;
+
+$table-border: $muted-border !default;
+$table-striped-bg: rgba(111, 120, 135, 0.0375) !default;
+
+$spacing-xxs: 0.25rem !default;
+$spacing-xs: 0.5rem !default;
+$spacing-sm: 0.75rem !default;
+$spacing-md: 1rem !default;
+$spacing-lg: 1.5rem !default;
+$spacing-xl: 2rem !default;
+
 $radius-sm: 6px !default;
 $radius-md: 10px !default;
 $radius-lg: 12px !default;
 $container-max: 80rem !default;
 
-// transitions
 $trans-fast: 0.12s !default;
 $trans-md: 0.18s !default;
-

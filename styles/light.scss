@@ -1,21 +1,71 @@
 // Light theme — configure the settings module then use shared partials
 @use 'settings' with (
 	$bg: #ffffff,
-	$text: #0f1724,
-	$muted: #6b7280,
-	$link: #0b5fff,
-	$accent: #0b5fff,
+	$color: #373c44,
+	$muted: #646b79,
+	$muted-border: rgb(231, 234, 239.5),
+	$link: #0172ad,
+	$accent: #0172ad,
+	$accent-hover: #015887,
+	$accent-focus: rgba(2, 154, 232, 0.5),
 	$accent-contrast: #ffffff,
-	$border: #e6e9ee,
-	$surface: #f8fafc
+	$border: #cfd5e2,
+	$surface: #f8fafc,
+	$selection: rgba(2, 154, 232, 0.25),
+	$h1-color: #2d3138,
+	$h2-color: #373c44,
+	$h3-color: #424751,
+	$h4-color: #4d535e,
+	$h5-color: #5c6370,
+	$h6-color: #646b79,
+	$mark-bg: rgb(252.5, 230.5, 191.5),
+	$mark-color: #0f1114,
+	$ins-color: rgb(28.5, 105.5, 84),
+	$del-color: rgb(136, 56.5, 53),
+	$code-bg: rgb(243, 244.5, 246.75),
+	$code-color: #646b79,
+	$code-kbd-bg: #373c44,
+	$code-kbd-color: #ffffff,
+	$form-element-bg: rgb(251, 251.5, 252.25),
+	$form-element-border: #cfd5e2,
+	$form-element-color: #23262c,
+	$form-element-placeholder: #646b79,
+	$form-element-active-bg: #ffffff,
+	$form-element-active-border: #0172ad,
+	$form-element-invalid: rgb(183.5, 105.5, 106.5),
+	$form-element-invalid-active: rgb(200.25, 79.25, 72.25),
+	$form-element-valid: rgb(76, 154.5, 137.5),
+	$form-element-valid-active: rgb(39, 152.75, 118.75),
+	$switch-bg: #bfc7d9,
+	$switch-checked-bg: #0172ad,
+	$switch-color: #ffffff,
+	$range-border: #dfe3eb,
+	$range-active-border: #bfc7d9,
+	$range-thumb-border: #ffffff,
+	$range-thumb-color: #525f7a,
+	$range-thumb-active-color: #0172ad,
+	$accordion-border: rgb(231, 234, 239.5),
+	$accordion-active-summary: #015887,
+	$accordion-close-summary: #373c44,
+	$accordion-open-summary: #646b79,
+	$card-bg: #ffffff,
+	$card-border: rgb(231, 234, 239.5),
+	$card-sectioning-bg: rgb(251, 251.5, 252.25),
+	$dropdown-bg: #ffffff,
+	$dropdown-border: #eff1f4,
+	$dropdown-hover-bg: #eff1f4,
+	$progress-bg: #dfe3eb,
+	$progress-color: #0172ad,
+	$tooltip-bg: #181c25,
+	$tooltip-color: #ffffff,
+	$table-border: rgb(231, 234, 239.5),
+	$table-striped-bg: rgba(111, 120, 135, 0.0375)
 );
 
 @use 'base';
 @use 'forms';
 
-/* page-level helpers */
+@use 'components';
+
 .site-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
 .theme-toggle{align-self:flex-end}
-
-/* Pico-like small tweaks */
-blockquote{border-left:4px solid settings.$border;padding:.5rem 1rem;color:settings.$muted;background:transparent}

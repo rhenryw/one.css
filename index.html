@@ -52,6 +52,46 @@
           <p>Use cards for grouping related content.</p>
         </div>
       </div>
+
+      <h3 style="margin-top:1.25rem">Extras (badges, avatars, breadcrumb, pagination, dropdown, tooltips, toasts, modal, range, switch)</h3>
+      <div class="row" style="gap:.8rem;align-items:center;margin-top:.6rem">
+        <div style="flex:1">
+          <p><span class="badge">New</span> <span class="badge badge--muted">Beta</span></p>
+          <p style="margin-top:.6rem">
+            <span class="avatar">HW</span>
+            <span class="avatar avatar--sm" style="margin-left:.6rem">JR</span>
+            <span class="avatar avatar--lg" style="margin-left:.6rem"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop" alt="avatar"></span>
+          </p>
+        </div>
+        <div style="flex:1">
+          <ul class="breadcrumb"><li><a href="#">Home</a></li><li><a href="#">Docs</a></li><li>Components</li></ul>
+          <nav aria-label="Pagination" style="margin-top:.6rem"><ul class="pagination"><li><a href="#">Prev</a></li><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#" aria-current="page">3</a></li><li><a href="#">Next</a></li></ul></nav>
+        </div>
+        <div style="flex:1">
+          <details class="dropdown">
+            <summary class="btn btn--ghost">Options</summary>
+            <ul>
+              <li><a href="#">First</a></li>
+              <li><a href="#">Second</a></li>
+              <li><a href="#">Third</a></li>
+            </ul>
+          </details>
+          <button data-tooltip="I am a tooltip" class="btn btn--ghost" style="margin-left:.6rem">Hover</button>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:1rem;gap:1rem;align-items:center">
+        <div style="flex:1">
+          <button id="show-toast" class="btn btn--outline">Show toast</button>
+          <button id="open-modal" class="btn btn--ghost" style="margin-left:.6rem">Open modal</button>
+        </div>
+        <div style="flex:1">
+          <label style="display:block">Range <input id="demo-range" type="range" min="0" max="100" value="40"></label>
+        </div>
+        <div style="flex:1">
+          <label style="display:inline-flex;gap:.6rem;align-items:center">Accessible switch<div id="demo-switch" role="switch" tabindex="0" aria-checked="false"></div></label>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -238,6 +278,44 @@
           launchConfetti(r.left + r.width/2, r.top + r.height/2, 40);
         });
       }
+
+      /* --- Extras demo JS --- */
+      // Toasts
+      const toastViewport = document.createElement('div');
+      toastViewport.className = 'toast-viewport';
+      document.body.appendChild(toastViewport);
+      document.getElementById('show-toast').addEventListener('click', ()=>{
+        const t = document.createElement('div');
+        t.className = 'toast';
+        t.textContent = 'Saved — your changes were applied.';
+        toastViewport.appendChild(t);
+        setTimeout(()=> t.remove(), 3600);
+      });
+
+      // Modal
+      const demoModal = document.createElement('div');
+      demoModal.id = 'demo-modal';
+      demoModal.className = 'modal-overlay';
+      demoModal.style.display = 'none';
+      demoModal.innerHTML = `<div class="modal"><button class="modal-close" aria-label="Close">×</button><h3>Modal title</h3><p>This is a simple modal demo.</p><div style="margin-top:1rem"><button class="btn">Okay</button></div></div>`;
+      document.body.appendChild(demoModal);
+      demoModal.querySelector('.modal-close').addEventListener('click', ()=> demoModal.style.display = 'none');
+      demoModal.addEventListener('click', (ev)=> { if(ev.target === demoModal) demoModal.style.display = 'none' });
+      document.getElementById('open-modal').addEventListener('click', ()=> demoModal.style.display = 'flex');
+
+      // Range demo
+      const range = document.getElementById('demo-range');
+      if(range){
+        range.addEventListener('input', ()=> {
+          range.title = range.value + '%';
+        });
+      }
+
+      // Accessible role=switch demo
+      const demoSwitch = document.getElementById('demo-switch');
+      function toggleSwitch(el){ const next = el.getAttribute('aria-checked') !== 'true'; el.setAttribute('aria-checked', next); }
+      demoSwitch.addEventListener('click', ()=> toggleSwitch(demoSwitch));
+      demoSwitch.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSwitch(demoSwitch); } });
     })();
   </script>
 </body>

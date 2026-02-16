@@ -1,61 +1,224 @@
-// Base, typographic scale and element styles (classless)
-
 @use 'settings' as s;
 
-html, body { height: 100%; }
-/* Make sizing predictable for flex children and form controls */
+html, body { height: 100%; margin: 0; width: 100%; }
 *, *::before, *::after { box-sizing: border-box; }
+
 body{
-  margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  line-height: 1.6;
+  font-family: var(--font-family, #{s.$font-family});
+  line-height: var(--line-height, #{s.$line-height});
   -webkit-font-smoothing: antialiased;
   background: var(--bg, #{s.$bg});
-  color: var(--text, #{s.$text});
-  padding: s.$space-xl;
+  color: var(--color, #{s.$color});
+  padding: var(--block-spacing-vertical, #{s.$block-spacing-vertical});
+}
+
+main { display: block; }
+
+section {
+  margin-bottom: var(--block-spacing-vertical, #{s.$block-spacing-vertical});
 }
 
 .container{
-  max-width: s.$container-max;
-  margin: 0 auto;
-  padding: 0 s.$space-md;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacing, #{s.$spacing});
+  padding-left: var(--spacing, #{s.$spacing});
 }
 
-/* Headings */
-h1,h2,h3,h4,h5,h6{font-weight:600;margin: s.$space-lg 0 s.$space-sm}
-h1{font-size:2.25rem}
-h2{font-size:1.75rem}
-h3{font-size:1.25rem}
+@media (min-width: 576px) {
+  .container { max-width: 510px; padding-right: 0; padding-left: 0; }
+}
+@media (min-width: 768px) {
+  .container { max-width: 700px; }
+}
+@media (min-width: 1024px) {
+  .container { max-width: 950px; }
+}
+@media (min-width: 1280px) {
+  .container { max-width: 1200px; }
+}
+@media (min-width: 1536px) {
+  .container { max-width: 1450px; }
+}
 
-p{margin:0 0 s.$space-md}
+.grid {
+  grid-column-gap: var(--grid-column-gap, #{s.$grid-column-gap});
+  grid-row-gap: var(--grid-row-gap, #{s.$grid-row-gap});
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(auto-fit, minmax(0%, 1fr)); }
+}
+.grid > * { min-width: 0; }
 
+.overflow-auto { overflow: auto; }
 
-a{color: var(--link, #{s.$link}); text-decoration: none}
-a:hover{text-decoration: underline}
+h1, h2, h3, h4, h5, h6{
+  margin-top: 0;
+  margin-bottom: var(--typography-spacing-vertical, #{s.$typography-spacing-vertical});
+  color: var(--color, #{s.$color});
+  font-weight: 700;
+  font-size: var(--font-size, #{s.$font-size});
+  line-height: var(--line-height, #{s.$line-height});
+  font-family: var(--font-family, #{s.$font-family});
+}
 
-/* Lists */
+h1 { --color: var(--h1-color); --font-size: 2rem; --line-height: 1.125; }
+h2 { --color: var(--h2-color); --font-size: 1.75rem; --line-height: 1.15; }
+h3 { --color: var(--h3-color); --font-size: 1.5rem; --line-height: 1.175; }
+h4 { --color: var(--h4-color); --font-size: 1.25rem; --line-height: 1.2; }
+h5 { --color: var(--h5-color); --font-size: 1.125rem; --line-height: 1.225; }
+h6 { --color: var(--h6-color); --font-size: 1rem; --line-height: 1.25; }
 
-ul,ol{margin:0 0 s.$space-md 1.25rem}
-li{margin: s.$space-xxs 0}
+:is(article, address, blockquote, dl, figure, form, ol, p, pre, table, ul) ~ :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2rem;
+}
 
-/* Images */
-img{max-width:100%;height:auto;border-radius: s.$radius-sm}
+p{margin:0 0 var(--typography-spacing-vertical, #{s.$typography-spacing-vertical})}
 
-/* Tables */
-table{width:100%;border-collapse:collapse;margin:0 0 s.$space-md}
-th,td{padding: s.$space-sm; border:1px solid var(--border, #{s.$border}); text-align:left}
-thead th{background: var(--surface, #{s.$surface})}
+hgroup {
+  margin-bottom: var(--typography-spacing-vertical);
+}
+hgroup > * { margin-top: 0; margin-bottom: 0; }
+hgroup > *:not(:first-child):last-child {
+  --color: var(--muted);
+  font-weight: unset;
+  font-size: 1rem;
+}
 
-/* Code */
-pre{background:var(--surface, #{s.$surface});padding: s.$space-md; border-radius: s.$radius-sm; overflow:auto}
-code{background:rgba(0,0,0,0.04);padding:.2rem .4rem;border-radius:4px}
+b, strong { font-weight: bolder; }
 
-/* NOTE: button styles are provided by the components module so we don't
-   duplicate/override them here. */
+sub, sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
 
-/* Forms (simple classless styling) */
-label{display:block;margin: s.$space-sm 0 s.$space-xs}
-input,textarea,select{width:100%;padding: s.$space-sm;border:1px solid s.$border;border-radius: s.$radius-sm;background:transparent;color:inherit}
+a{color: var(--link, #{s.$link}); text-decoration: underline; text-underline-offset: 0.125em; transition: color var(--transition, #{s.$transition});}
+a:hover{color: var(--accent-hover, #{s.$accent-hover}); text-decoration: none;}
+a:focus-visible{outline: var(--outline-width, #{s.$outline-width}) solid var(--accent-focus); outline-offset: 2px;}
 
-/* Utility */
-.grid{display:grid;gap: s.$space-md}
+a.secondary{ --color: var(--muted); }
+a.secondary:hover{ --color: var(--accent-hover); }
+a.contrast{ --color: var(--h1-color); }
+a.contrast:hover{ --color: #000; }
+
+address, blockquote, dl, ol, p, pre, table, ul {
+  margin-top: 0;
+  margin-bottom: var(--typography-spacing-vertical);
+  color: var(--color);
+  font-style: normal;
+  font-weight: var(--font-weight);
+}
+
+ul, ol{margin:0 0 var(--typography-spacing-vertical) 1.25rem}
+li{margin: calc(var(--typography-spacing-vertical) * 0.25) 0}
+ul li { list-style: square; }
+:where(dl, ol, ul) :where(dl, ol, ul) { margin: 0; margin-top: calc(var(--typography-spacing-vertical) * 0.25); }
+
+mark {
+  padding: 0.125rem 0.25rem;
+  background-color: var(--mark-bg);
+  color: var(--mark-color);
+  vertical-align: baseline;
+}
+
+blockquote {
+  display: block;
+  margin: var(--typography-spacing-vertical) 0;
+  padding: var(--spacing);
+  border-left: 0.25rem solid var(--muted-border);
+  border-inline-start: 0.25rem solid var(--muted-border);
+  border-inline-end: none;
+}
+blockquote footer {
+  margin-top: calc(var(--typography-spacing-vertical) * 0.5);
+  color: var(--muted);
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+  text-decoration: none;
+  cursor: help;
+}
+
+ins {
+  color: var(--ins-color);
+  text-decoration: none;
+}
+
+del {
+  color: var(--del-color);
+}
+
+img{max-width:100%;height:auto;border-radius: var(--border-radius); border-style: none; vertical-align: middle;}
+:where(audio, canvas, iframe, img, svg, video) { vertical-align: middle; }
+audio, video { display: inline-block; }
+audio:not([controls]) { display: none; height: 0; }
+iframe { border-style: none; }
+svg:not([fill]) { fill: currentColor; }
+svg:not(:root), svg:not(:host) { overflow: hidden; }
+
+table{width: 100%; border-collapse: collapse; border-spacing: 0; text-indent: 0; margin-bottom: var(--typography-spacing-vertical);}
+th, td{
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  border-bottom: var(--border-width) solid var(--table-border);
+  background-color: var(--bg);
+  color: var(--color);
+  font-weight: var(--font-weight);
+  text-align: left;
+  text-align: start;
+}
+thead th, thead td, tfoot th, tfoot td {
+  font-weight: 600;
+  border-bottom-width: 0.1875rem;
+}
+tfoot th, tfoot td {
+  border-top: var(--border-width) solid var(--table-border);
+  border-bottom: 0;
+}
+table.striped tbody tr:nth-child(odd) th,
+table.striped tbody tr:nth-child(odd) td {
+  background-color: var(--table-striped-bg);
+}
+
+pre, code, kbd, samp {
+  font-size: 0.875em;
+  font-family: var(--font-family-monospace);
+}
+pre code, pre samp { font-size: inherit; font-family: inherit; }
+pre { -ms-overflow-style: scrollbar; overflow: auto; display: block; margin-bottom: var(--spacing); }
+pre, code, kbd, samp {
+  border-radius: var(--border-radius);
+  background: var(--code-bg);
+  color: var(--code-color);
+  font-weight: var(--font-weight);
+  line-height: initial;
+}
+code, kbd, samp { display: inline-block; padding: 0.375rem; }
+pre > code, pre > samp { display: block; padding: var(--spacing); background: none; line-height: var(--line-height); }
+kbd {
+  background-color: var(--code-kbd-bg);
+  color: var(--code-kbd-color);
+  vertical-align: baseline;
+}
+
+figure{display:block; margin: 0; padding: 0;}
+figure figcaption{padding: calc(var(--spacing) * 0.5) 0; color: var(--muted);}
+
+hr {
+  height: 0;
+  margin: var(--typography-spacing-vertical) 0;
+  border: 0;
+  border-top: 1px solid var(--muted-border);
+  color: inherit;
+}
+
+[hidden], template { display: none !important; }
+
+canvas { display: inline-block; }

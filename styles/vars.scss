@@ -1,38 +1,250 @@
 @use 'settings' as s;
 @use 'sass:color' as color;
 
-/* CSS custom properties for runtime theming.  */
 :root{
+  --font-family: #{s.$font-family};
+  --font-family-sans-serif: #{s.$font-family-sans-serif};
+  --font-family-monospace: #{s.$font-family-monospace};
+  --line-height: #{s.$line-height};
+  --font-weight: #{s.$font-weight};
+  --font-size: #{s.$font-size};
+  --text-underline-offset: #{s.$text-underline-offset};
+  --border-radius: #{s.$border-radius};
+  --border-width: #{s.$border-width};
+  --outline-width: #{s.$outline-width};
+  --transition: #{s.$transition};
+  --spacing: #{s.$spacing};
+  --typography-spacing-vertical: #{s.$typography-spacing-vertical};
+  --block-spacing-vertical: #{s.$block-spacing-vertical};
+  --block-spacing-horizontal: #{s.$block-spacing-horizontal};
+  --grid-column-gap: #{s.$grid-column-gap};
+  --grid-row-gap: #{s.$grid-row-gap};
+  --form-element-spacing-vertical: #{s.$form-element-spacing-vertical};
+  --form-element-spacing-horizontal: #{s.$form-element-spacing-horizontal};
+  --nav-element-spacing-vertical: #{s.$nav-element-spacing-vertical};
+  --nav-element-spacing-horizontal: #{s.$nav-element-spacing-horizontal};
+  --nav-link-spacing-vertical: #{s.$nav-link-spacing-vertical};
+  --nav-link-spacing-horizontal: #{s.$nav-link-spacing-horizontal};
+
   --bg: #{s.$bg};
-  --text: #{s.$text};
+  --color: #{s.$color};
   --muted: #{s.$muted};
+  --muted-border: #{s.$muted-border};
   --link: #{s.$link};
   --accent: #{s.$accent};
-  --accent-400: #{color.adjust(s.$accent, $lightness: 12%)};
-  --accent-200: #{color.adjust(s.$accent, $lightness: 8%)};
+  --accent-hover: #{s.$accent-hover};
+  --accent-focus: #{s.$accent-focus};
   --accent-contrast: #{s.$accent-contrast};
   --border: #{s.$border};
   --surface: #{s.$surface};
+  --selection: #{s.$selection};
 
-  /* spacing tokens (optional runtime access) */
+  --h1-color: #{s.$h1-color};
+  --h2-color: #{s.$h2-color};
+  --h3-color: #{s.$h3-color};
+  --h4-color: #{s.$h4-color};
+  --h5-color: #{s.$h5-color};
+  --h6-color: #{s.$h6-color};
+
+  --mark-bg: #{s.$mark-bg};
+  --mark-color: #{s.$mark-color};
+  --ins-color: #{s.$ins-color};
+  --del-color: #{s.$del-color};
+
+  --code-bg: #{s.$code-bg};
+  --code-color: #{s.$code-color};
+  --code-kbd-bg: #{s.$code-kbd-bg};
+  --code-kbd-color: #{s.$code-kbd-color};
+
+  --form-element-bg: #{s.$form-element-bg};
+  --form-element-border: #{s.$form-element-border};
+  --form-element-color: #{s.$form-element-color};
+  --form-element-placeholder: #{s.$form-element-placeholder};
+  --form-element-active-bg: #{s.$form-element-active-bg};
+  --form-element-active-border: #{s.$form-element-active-border};
+  --form-element-disabled-opacity: #{s.$form-element-disabled-opacity};
+  --form-element-invalid: #{s.$form-element-invalid};
+  --form-element-invalid-active: #{s.$form-element-invalid-active};
+  --form-element-valid: #{s.$form-element-valid};
+  --form-element-valid-active: #{s.$form-element-valid-active};
+
+  --switch-bg: #{s.$switch-bg};
+  --switch-checked-bg: #{s.$switch-checked-bg};
+  --switch-color: #{s.$switch-color};
+
+  --range-border: #{s.$range-border};
+  --range-active-border: #{s.$range-active-border};
+  --range-thumb-border: #{s.$range-thumb-border};
+  --range-thumb-color: #{s.$range-thumb-color};
+  --range-thumb-active-color: #{s.$range-thumb-active-color};
+
+  --accordion-border: #{s.$accordion-border};
+  --accordion-active-summary: #{s.$accordion-active-summary};
+  --accordion-close-summary: #{s.$accordion-close-summary};
+  --accordion-open-summary: #{s.$accordion-open-summary};
+
+  --card-bg: #{s.$card-bg};
+  --card-border: #{s.$card-border};
+  --card-sectioning-bg: #{s.$card-sectioning-bg};
+
+  --dropdown-bg: #{s.$dropdown-bg};
+  --dropdown-border: #{s.$dropdown-border};
+  --dropdown-hover-bg: #{s.$dropdown-hover-bg};
+
+  --progress-bg: #{s.$progress-bg};
+  --progress-color: #{s.$progress-color};
+
+  --tooltip-bg: #{s.$tooltip-bg};
+  --tooltip-color: #{s.$tooltip-color};
+
+  --table-border: #{s.$table-border};
+  --table-striped-bg: #{s.$table-striped-bg};
+
   --space-xs: #{s.$space-xs};
   --space-sm: #{s.$space-sm};
   --space-md: #{s.$space-md};
   --space-lg: #{s.$space-lg};
   --radius-sm: #{s.$radius-sm};
   --radius-md: #{s.$radius-md};
+
+  --accent-400: #{color.adjust(s.$accent, $lightness: 12%)};
+  --accent-200: #{color.adjust(s.$accent, $lightness: 8%)};
 }
 
-/* dark theme variables applied when `.dark` is present on <html> */
+@media (min-width: 576px) {
+  :root { --font-size: 106.25%; }
+}
+@media (min-width: 768px) {
+  :root { --font-size: 112.5%; }
+}
+@media (min-width: 1024px) {
+  :root { --font-size: 118.75%; }
+}
+@media (min-width: 1280px) {
+  :root { --font-size: 125%; }
+}
+@media (min-width: 1536px) {
+  :root { --font-size: 131.25%; }
+}
+
 .dark{
-  --bg: #0b1220;
-  --text: #e6eef8;
-  --muted: #94a3b8;
-  --link: #7cc7ff;
-  --accent: #7cc7ff;
-  --accent-400: #{color.adjust(#7cc7ff, $lightness: 12%)};
-  --accent-200: #{color.adjust(#7cc7ff, $lightness: 8%)};
-  --accent-contrast: #06202a;
-  --border: #12202b;
-  --surface: #07111a;
+  --bg: #0a0a0a;
+  --color: #c2c7d0;
+  --muted: #7b8495;
+  --muted-border: #202632;
+  --link: #01aaff;
+  --accent: #01aaff;
+  --accent-hover: #79c0ff;
+  --accent-focus: rgba(1, 170, 255, 0.375);
+  --accent-contrast: #0172ad;
+  --border: #262626;
+  --surface: #0f0f0f;
+  --selection: rgba(1, 170, 255, 0.1875);
+
+  --h1-color: #f0f1f3;
+  --h2-color: #e0e3e7;
+  --h3-color: #c2c7d0;
+  --h4-color: #b3b9c5;
+  --h5-color: #a4acba;
+  --h6-color: #8891a4;
+
+  --mark-bg: #014063;
+  --mark-color: #fff;
+  --ins-color: #62af9a;
+  --del-color: rgb(205.5, 126, 123);
+
+  --code-bg: rgb(26, 30.5, 40.25);
+  --code-color: #8891a4;
+  --code-kbd-bg: #c2c7d0;
+  --code-kbd-color: #0a0a0a;
+
+  --form-element-bg: rgb(28, 33, 43.5);
+  --form-element-border: #2a3140;
+  --form-element-color: #e0e3e7;
+  --form-element-placeholder: #8891a4;
+  --form-element-active-bg: rgb(26, 30.5, 40.25);
+  --form-element-active-border: #0172ad;
+  --form-element-invalid: rgb(149.5, 74, 80);
+  --form-element-invalid-active: rgb(183.25, 63.5, 59);
+  --form-element-valid: #2a7b6f;
+  --form-element-valid-active: rgb(22, 137, 105.5);
+
+  --switch-bg: #333c4e;
+  --switch-checked-bg: #0172ad;
+  --switch-color: #fff;
+
+  --range-border: #202632;
+  --range-active-border: #2a3140;
+  --range-thumb-border: #0a0a0a;
+  --range-thumb-color: #525f7a;
+  --range-thumb-active-color: #0172ad;
+
+  --accordion-border: #202632;
+  --accordion-active-summary: #79c0ff;
+  --accordion-close-summary: #c2c7d0;
+  --accordion-open-summary: #7b8495;
+
+  --card-bg: #181c25;
+  --card-border: #181c25;
+  --card-sectioning-bg: rgb(26, 30.5, 40.25);
+
+  --dropdown-bg: #181c25;
+  --dropdown-border: #202632;
+  --dropdown-hover-bg: #202632;
+
+  --progress-bg: #202632;
+  --progress-color: #0172ad;
+
+  --tooltip-bg: #eff1f4;
+  --tooltip-color: #000;
+
+  --table-border: #202632;
+  --table-striped-bg: rgba(111, 120, 135, 0.0375);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+:root {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg);
+  color: var(--color);
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-family: var(--font-family);
+  text-underline-offset: var(--text-underline-offset);
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+}
+
+::-moz-selection {
+  background-color: var(--selection);
+}
+
+::selection {
+  background-color: var(--selection);
+}
+
+progress,
+[type=checkbox],
+[type=radio],
+[type=range] {
+  accent-color: var(--accent);
 }
