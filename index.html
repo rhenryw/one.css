@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>one.css — Demo</title>
+  <link rel="stylesheet" href="dist/one.css">
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div style="display:flex;align-items:center;gap:1rem">
+        <h1>one.css</h1>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#components">Components</a>
+          <a href="#forms">Forms</a>
+          <a href="#demo">Demo</a>
+        </nav>
+      </div>
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <button id="bg-grid-btn" class="btn btn--ghost" title="Grid background">Grid</button>
+        <button id="bg-dots-btn" class="btn btn--ghost" title="Dots background">Dots</button>
+        <label class="theme-switch" title="Toggle theme">
+          <input id="toggle-theme" type="checkbox">
+          <span class="track"><span class="knob"></span></span>
+        </label>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Hero / Intro</h2>
+      <p class="muted">A tiny, classless stylesheet with light & dark themes, now with nicer components and subtle animations.</p>
+      <div class="row" style="margin-top:1rem">
+  <button class="btn btn--pulse">Primary</button>
+        <button class="btn btn--outline">Outline</button>
+        <button class="btn btn--ghost">Ghost</button>
+        <button class="btn btn--large">Large</button>
+      </div>
+    </section>
+
+  <section id="components">
+      <h2>Cards & Layout</h2>
+      <div class="row">
+        <div class="card" style="flex:1">
+          <h3>Card title</h3>
+          <p>Cards have subtle elevation and lift on hover.</p>
+          <a class="btn btn--small" href="#">Action</a>
+        </div>
+        <div class="card" style="flex:1">
+          <h3>Another card</h3>
+          <p>Use cards for grouping related content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Media</h2>
+      <figure>
+        <div class="embed"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="demo" allowfullscreen></iframe></div>
+        <figcaption>Responsive iframe embed</figcaption>
+      </figure>
+      <blockquote>Blockquote example — classless styling should make this readable.</blockquote>
+    </section>
+
+    <section>
+      <h2>Details, Progress, and Meter</h2>
+      <details>
+        <summary>More info</summary>
+        <p>Hidden content inside details/summary.</p>
+      </details>
+
+      <h3>Progress</h3>
+      <progress value="45" max="100"></progress>
+
+      <h3>Fancy Checkbox & Inline Toggle</h3>
+      <label style="display:inline-flex;align-items:center;gap:.6rem">
+        <input class="ui-checkbox" type="checkbox">
+        <span>Checkbox with animated check</span>
+      </label>
+
+      <h3>Meter</h3>
+      <meter value="0.6">60%</meter>
+    </section>
+
+    <section>
+      <h2>Layout & Alignment</h2>
+      <div class="row" style="gap:1rem;align-items:start">
+        <div class="card" style="width:30%">
+          <p class="text-left">Left aligned block (.text-left)</p>
+        </div>
+        <div class="card align-center" style="width:30%">
+          <p class="text-center">Centered card (.align-center .text-center)</p>
+        </div>
+        <div class="card" style="width:30%">
+          <p class="text-right align-right">Right aligned text (.text-right)</p>
+        </div>
+      </div>
+
+      <hr>
+      <p class="text-center muted">— separator —</p>
+    </section>
+
+    <section id="forms">
+      <h2>Forms</h2>
+      <form>
+        <label>Name<input type="text" placeholder="Your name"></label>
+        <div class="row">
+          <label style="flex:1">Email<input type="email" placeholder="you@example.com"></label>
+          <label style="flex:1">Phone<input type="tel" placeholder="(555) 555-5555"></label>
+        </div>
+        <label>Message<textarea rows="4"></textarea></label>
+        <fieldset>
+          <legend>Options</legend>
+          <label><input type="checkbox"> Subscribe</label>
+          <label><input type="radio" name="plan"> Basic</label>
+          <label><input type="radio" name="plan"> Pro</label>
+        </fieldset>
+        <div style="margin-top:1rem">
+          <input class="btn btn--celebrate" type="submit" value="Send">
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Tables & Code</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Role</th><th>Score</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Alice</td><td>Engineer</td><td>92</td></tr>
+          <tr><td>Bob</td><td>Designer</td><td>85</td></tr>
+        </tbody>
+      </table>
+
+      <pre><code>function greet(name){
+  return `Hello ${name}`
+}
+</code></pre>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div style="flex:1">
+            <strong>one.css</strong>
+            <p class="muted">Small, responsive, classless stylesheet.</p>
+          </div>
+          <div style="flex:1;text-align:right">
+            <small class="muted">© 2026</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const checkbox = document.getElementById('toggle-theme');
+
+      function setTheme(dark){
+        document.documentElement.classList.toggle('dark', !!dark);
+        checkbox.checked = !!dark;
+        try{ localStorage.setItem('theme', !!dark ? 'dark' : 'light'); }catch(e){}
+      }
+
+      // initialize theme from localStorage or prefers-color-scheme
+      const stored = (function(){ try{ return localStorage.getItem('theme') }catch(e){ return null } })();
+      if(stored){ setTheme(stored === 'dark'); }
+      else { setTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); }
+
+      checkbox.addEventListener('change', ()=> setTheme(checkbox.checked));
+
+      // Style native <meter> elements using a CSS variable (overrides native green)
+      function updateMeters(){
+        document.querySelectorAll('meter').forEach(m=>{
+          const val = parseFloat(m.getAttribute('value')) || 0;
+          const max = parseFloat(m.getAttribute('max')) || 1;
+          const pct = Math.round((val / max) * 100);
+          m.style.setProperty('--meter-pct', pct + '%');
+          m.dataset.percent = pct + '%';
+        });
+      }
+      updateMeters();
+      // Example: animate the demo progress for visual effect
+      const prog = document.querySelector('progress');
+      if(prog){
+        let v = +prog.value;
+        setInterval(()=>{ v = (v + 5) % (prog.max + 1); prog.value = v; }, 1500);
+      }
+
+      // Background toggles
+      const container = document.querySelector('.container');
+      document.getElementById('bg-grid-btn').addEventListener('click', ()=>{
+        container.classList.toggle('bg-grid');
+        container.classList.remove('bg-dots');
+      });
+      document.getElementById('bg-dots-btn').addEventListener('click', ()=>{
+        container.classList.toggle('bg-dots');
+        container.classList.remove('bg-grid');
+      });
+
+      // Confetti (small DOM-based burst)
+      function rand(min,max){ return Math.random()*(max-min)+min }
+      function launchConfetti(x,y,count=18){
+        const colors = [getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#0b5fff', getComputedStyle(document.documentElement).getPropertyValue('--accent-200').trim() || '#62a7ff', '#FFD166', '#FF6B6B', '#9B8CFF'];
+        for(let i=0;i<count;i++){
+          const el = document.createElement('div');
+          el.className = 'confetti-piece';
+          el.style.left = (x + rand(-24,24)) + 'px';
+          el.style.top = (y + rand(-8,8)) + 'px';
+          el.style.background = colors[Math.floor(rand(0,colors.length))];
+          el.style.width = Math.floor(rand(6,12)) + 'px';
+          el.style.height = Math.floor(rand(8,14)) + 'px';
+          el.style.transform = `translateX(${rand(-60,60)}px) rotate(${rand(0,360)}deg)`;
+          el.style.animationDuration = (700 + Math.floor(rand(0,600))) + 'ms';
+          document.body.appendChild(el);
+          el.addEventListener('animationend', ()=> el.remove());
+        }
+      }
+
+      // attach confetti to celebrate buttons and form submit
+      document.querySelectorAll('.btn--celebrate').forEach(b=>{
+        b.addEventListener('click', (ev)=>{
+          const r = b.getBoundingClientRect();
+          launchConfetti(r.left + r.width/2, r.top + r.height/2, 22);
+        });
+      });
+
+      // intercept demo form submit to show confetti
+      const demoForm = document.querySelector('form');
+      if(demoForm){
+        demoForm.addEventListener('submit', e=>{
+          e.preventDefault();
+          const btn = demoForm.querySelector('.btn--celebrate');
+          const r = btn.getBoundingClientRect();
+          launchConfetti(r.left + r.width/2, r.top + r.height/2, 40);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

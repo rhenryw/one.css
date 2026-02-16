@@ -1,0 +1,17 @@
+// Dark theme — configure the settings module then use shared partials
+@use 'settings' with (
+	$bg: #0b1220,
+	$text: #e6eef8,
+	$muted: #94a3b8,
+	$link: #7cc7ff,
+	$accent: #7cc7ff,
+	$accent-contrast: #06202a,
+	$border: #12202b,
+	$surface: #07111a
+);
+
+@use 'base';
+@use 'forms';
+
+/* subtle inversion tweaks */
+blockquote{border-left:4px solid settings.$border;padding:.5rem 1rem;color:settings.$muted;background:transparent}

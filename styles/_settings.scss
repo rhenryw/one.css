@@ -1,0 +1,28 @@
+// Theme settings with sensible defaults. Can be configured via `@use 'settings' with (...)`.
+$bg: #ffffff !default;
+$text: #0f1724 !default;
+$muted: #6b7280 !default;
+$link: #0b5fff !default;
+$accent: #0b5fff !default;
+$accent-contrast: #ffffff !default;
+$border: #e6e9ee !default;
+$surface: #f8fafc !default;
+
+// spacing scale
+$space-xxs: 0.25rem !default;
+$space-xs: 0.5rem !default;
+$space-sm: 0.75rem !default;
+$space-md: 1rem !default;
+$space-lg: 1.5rem !default;
+$space-xl: 2rem !default;
+
+// radii & container
+$radius-sm: 6px !default;
+$radius-md: 10px !default;
+$radius-lg: 12px !default;
+$container-max: 80rem !default;
+
+// transitions
+$trans-fast: 0.12s !default;
+$trans-md: 0.18s !default;
+

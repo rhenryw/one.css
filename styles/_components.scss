@@ -1,0 +1,225 @@
+@use 'settings' as s;
+@use 'sass:color' as color;
+
+// Animations & timing
+$ease-fast: cubic-bezier(.2,.9,.2,1);
+$ease-smooth: cubic-bezier(.2,.8,.2,1);
+
+@keyframes float {
+  from { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  to { transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+  70% { box-shadow: 0 6px 20px -8px rgba(0,0,0,0.12); }
+  100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+}
+
+/* Buttons: improve visuals and add variants */
+.btn, button, input[type=submit], input[type=button] {
+  display: inline-block;
+  font-weight: 600;
+  padding: s.$space-sm s.$space-md;
+  border-radius: s.$radius-md;
+  transition: transform s.$trans-fast, box-shadow s.$trans-md, background-color s.$trans-fast;
+  will-change: transform;
+}
+
+.btn:hover, button:hover { transform: translateY(-2px); }
+.btn:active, button:active { transform: translateY(0); }
+.btn:focus-visible, button:focus-visible { outline: 3px solid rgba(11,95,255,0.18); outline-offset: 2px }
+
+.btn--outline{ background: transparent; color: var(--accent, #{s.$accent}); border:1px solid var(--border, #{s.$border}) }
+.btn--ghost{ background: transparent; color: var(--text, #{s.$text}); border: none }
+.btn--small{ padding:.25rem .5rem; font-size:.9rem }
+.btn--large{ padding:.9rem 1.2rem; font-size:1.05rem }
+
+/* click animations */
+.btn--pulse:active{ animation: pulse 600ms ease-out }
+
+/* Card surface */
+.card{
+  background: var(--surface, #{s.$surface});
+  padding: s.$space-md;
+  border-radius: s.$radius-md;
+  box-shadow: 0 6px 18px -10px rgba(2,6,23,0.08);
+  transition: transform s.$trans-md, box-shadow s.$trans-md;
+}
+/* prevent cards from overflowing their flex container */
+.card{ min-width: 0 }
+.card:hover{ transform: translateY(-6px); box-shadow: 0 18px 48px -22px rgba(2,6,23,0.12) }
+
+/* Header, nav and footer */
+.site-header{padding: .5rem 0}
+.site-header h1{margin:0;line-height:1}
+nav{display:flex;gap: s.$space-md;align-items:center}
+nav a{color:inherit;padding:.4rem .6rem;border-radius:8px}
+nav a:hover{background: rgba(0,0,0,0.03)}
+
+.site-footer{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--border, #{s.$border});color:var(--muted, #{s.$muted})}
+
+/* Responsive nav menu */
+.menu{display:flex;gap: s.$space-sm;flex-wrap:wrap}
+.menu .menu-item{padding: s.$space-xs s.$space-sm;border-radius: s.$radius-sm}
+
+/* Details/summary */
+/* make fieldset labels inline and tighter for option lists */
+fieldset > label{display:inline-flex;align-items:center;gap: var(--space-sm, #{s.$space-sm});margin-right: var(--space-sm, #{s.$space-sm});margin-bottom:0}
+fieldset input[type="checkbox"], fieldset input[type="radio"]{margin:0 .5rem 0 0}
+
+/* increase spacing between top-level form children so items don't touch */
+form > * + *{margin-top: #{s.$space-md}}
+summary{cursor:pointer;font-weight:600}
+
+/* Figure */
+figure{margin:0 0 1rem}
+figcaption{font-size:.9rem;color:var(--muted, #{s.$muted});margin-top:.5rem}
+
+/* Iframe wrapper (responsive) */
+.embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px}
+.embed iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0}
+
+/* HR */
+hr{border:0;height:1px;background: linear-gradient(90deg, transparent, var(--border, #{s.$border}), transparent);margin: s.$space-lg 0}
+
+/* Progress & meter */
+progress{appearance:none;width:100%;height:var(--space-sm, #{s.$space-sm});border-radius:999px;overflow:hidden;background:var(--surface, #{s.$surface})}
+progress::-webkit-progress-value{background: linear-gradient(90deg, var(--accent, #{s.$accent}), var(--accent-400, #{color.adjust(s.$accent, $lightness: 12%)})); transition: width .36s cubic-bezier(.2,.8,.2,1); border-radius:999px }
+meter{background:var(--surface, #{s.$surface});border:1px solid var(--border, #{s.$border});padding:.2rem;border-radius:6px}
+
+/* Utilities */
+.stack{display:flex;flex-direction:column;gap: s.$space-md}
+.row{display:flex;gap: s.$space-md;flex-wrap:wrap}
+.row > *{min-width:0}
+.muted{color:var(--muted, #{s.$muted})}
+.kbd{background:var(--surface, #{s.$surface});padding:.15rem .35rem;border-radius:6px;border:1px solid var(--border, #{s.$border});font-family:monospace}
+
+/* -------------------------
+   Toggle switch and boxed checkbox
+   ------------------------- */
+
+/* Reusable ui-checkbox with CSS variables; default colors map to theme */
+.ui-checkbox{
+  --primary-color: var(--accent, #{s.$accent});
+  --secondary-color: var(--accent-contrast, #{s.$accent-contrast});
+  --primary-hover-color: var(--accent-200, #{color.adjust(s.$accent, $lightness: 8%)});
+  --checkbox-diameter: 20px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: var(--border, #{s.$border});
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+  --checkmark-size: 1.2;
+}
+
+.ui-checkbox,
+.ui-checkbox *,
+.ui-checkbox *::before,
+.ui-checkbox *::after{box-sizing:border-box}
+
+.ui-checkbox{
+  appearance:none;
+  width:var(--checkbox-diameter);
+  height:var(--checkbox-diameter);
+  border-radius:var(--checkbox-border-radius);
+  background:var(--secondary-color);
+  border:var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  transition: all .28s cubic-bezier(.2,.8,.2,1);
+  cursor:pointer; position:relative;
+}
+
+.ui-checkbox::after{
+  content: "";
+  position:absolute; inset:0;
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius:inherit; opacity:0; transition: all .5s cubic-bezier(.12,.4,.29,1.46);
+}
+
+.ui-checkbox::before{
+  content: ""; position:absolute; top:40%; left:50%; width:4px; height:7px;
+  border-right:2px solid var(--secondary-color); border-bottom:2px solid var(--secondary-color);
+  transform: translate(-50%,-50%) rotate(45deg) scale(0); opacity:0;
+  transition: all .12s cubic-bezier(.71,-.46,.88,.6), opacity .12s;
+}
+
+.ui-checkbox:hover{ border-color: var(--primary-color) }
+.ui-checkbox:checked{ background: var(--primary-color); border-color: transparent }
+.ui-checkbox:checked::before{ opacity:1; transform: translate(-50%,-50%) rotate(45deg) scale(var(--checkmark-size)); transition: all .22s cubic-bezier(.12,.4,.29,1.46) .08s }
+.ui-checkbox:active:not(:checked)::after{ transition:none; box-shadow:none; opacity:1 }
+
+/* Toggle switch (pill with knob) */
+.theme-switch{
+  --width:44px; --height:26px; --knob:20px; --bg: var(--border, #{s.$border}); --accent: var(--accent, #{s.$accent});
+  display:inline-grid; align-items:center;
+}
+.theme-switch input{ display:none }
+.theme-switch .track{
+  width:var(--width); height:var(--height); border-radius:999px; background:var(--bg);
+  position:relative; transition: background .18s cubic-bezier(.2,.8,.2,1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.theme-switch .knob{
+  position:absolute; top:50%; left:4px; width:var(--knob); height:var(--knob); transform:translateY(-50%);
+  background: #{s.$accent-contrast}; border-radius:50%; box-shadow:0 6px 18px -10px rgba(2,6,23,0.12); transition: left .16s cubic-bezier(.2,.8,.2,1), transform .12s;
+}
+.theme-switch input:checked + .track{ background: var(--accent) }
+.theme-switch input:checked + .track .knob{ left: calc(var(--width) - var(--knob) - 4px) }
+
+/* backgrounds: grid or dots */
+.bg-grid{ --color: rgba(225,225,225,0.9); background-color: var(--surface); background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent); background-size: 55px 55px; }
+
+.bg-dots{ background-color: var(--surface); background-image: radial-gradient(var(--border) 1px, transparent 1px); background-size: 18px 18px; }
+
+/* confetti */
+.confetti-piece{ position:fixed; pointer-events:none; width:10px; height:14px; opacity:0; transform-origin:center; border-radius:2px; will-change: transform, opacity; animation: confetti-fall 900ms cubic-bezier(.2,.8,.2,1) forwards }
+@keyframes confetti-fall{ 0%{ opacity:1; transform: translateY(0) rotate(0) } 100%{ opacity:0; transform: translateY(260px) rotate(720deg) } }
+
+/* -------------------------
+   Improved progress & meter
+   ------------------------- */
+/* Utilities: flex/grid helpers */
+.flex{display:flex}
+.flex-row{flex-direction:row}
+.flex-col{flex-direction:column}
+.items-start{align-items:flex-start}
+.items-center{align-items:center}
+.items-end{align-items:flex-end}
+.justify-start{justify-content:flex-start}
+.justify-center{justify-content:center}
+.justify-end{justify-content:flex-end}
+.justify-between{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.no-wrap{flex-wrap:nowrap}
+.gap-xs{gap: var(--space-xs, #{s.$space-xs})}
+.gap-sm{gap: var(--space-sm, #{s.$space-sm})}
+.gap-md{gap: var(--space-md, #{s.$space-md})}
+.gap-lg{gap: var(--space-lg, #{s.$space-lg})}
+.grow{flex:1 1 auto}
+.shrink{flex:0 1 auto}
+.basis-1-2{flex-basis:50%}
+.basis-1-3{flex-basis:33.333%}
+.basis-1-4{flex-basis:25%}
+
+/* For Firefox */
+progress::-moz-progress-bar{ background: linear-gradient(90deg, var(--accent, #{s.$accent}), var(--accent-400, #{color.adjust(s.$accent, $lightness: 12%)})); border-radius:999px }
+
+/* Make native meter visually match the theme and remove default green */
+meter{
+  -webkit-appearance:none; appearance:none;
+  display:inline-block; min-width:6rem; height:1rem; padding:0 .5rem; border-radius:999px;
+  background: linear-gradient(90deg, var(--accent, #{s.$accent}) var(--meter-pct, 60%), rgba(0,0,0,0.06) 0%);
+  border:1px solid var(--border, #{s.$border}); color: var(--text, #{s.$text}); line-height:1rem; text-align:center; position:relative; overflow:hidden;
+}
+meter::after{ content: attr(data-percent); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:.85rem; color: inherit }
+meter::-webkit-meter-bar{ background: transparent }
+meter::-moz-meter-bar{ background: transparent }
+
+/* Alignment utilities */
+.text-left{ text-align: left }
+.text-center{ text-align: center }
+.text-right{ text-align: right }
+.align-left{ margin-left: 0; margin-right: auto }
+.align-center{ margin-left: auto; margin-right: auto }
+.align-right{ margin-left: auto; margin-right: 0 }
+

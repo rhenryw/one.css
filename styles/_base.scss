@@ -1,0 +1,61 @@
+// Base, typographic scale and element styles (classless)
+
+@use 'settings' as s;
+
+html, body { height: 100%; }
+/* Make sizing predictable for flex children and form controls */
+*, *::before, *::after { box-sizing: border-box; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg, #{s.$bg});
+  color: var(--text, #{s.$text});
+  padding: s.$space-xl;
+}
+
+.container{
+  max-width: s.$container-max;
+  margin: 0 auto;
+  padding: 0 s.$space-md;
+}
+
+/* Headings */
+h1,h2,h3,h4,h5,h6{font-weight:600;margin: s.$space-lg 0 s.$space-sm}
+h1{font-size:2.25rem}
+h2{font-size:1.75rem}
+h3{font-size:1.25rem}
+
+p{margin:0 0 s.$space-md}
+
+
+a{color: var(--link, #{s.$link}); text-decoration: none}
+a:hover{text-decoration: underline}
+
+/* Lists */
+
+ul,ol{margin:0 0 s.$space-md 1.25rem}
+li{margin: s.$space-xxs 0}
+
+/* Images */
+img{max-width:100%;height:auto;border-radius: s.$radius-sm}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:0 0 s.$space-md}
+th,td{padding: s.$space-sm; border:1px solid var(--border, #{s.$border}); text-align:left}
+thead th{background: var(--surface, #{s.$surface})}
+
+/* Code */
+pre{background:var(--surface, #{s.$surface});padding: s.$space-md; border-radius: s.$radius-sm; overflow:auto}
+code{background:rgba(0,0,0,0.04);padding:.2rem .4rem;border-radius:4px}
+
+/* NOTE: button styles are provided by the components module so we don't
+   duplicate/override them here. */
+
+/* Forms (simple classless styling) */
+label{display:block;margin: s.$space-sm 0 s.$space-xs}
+input,textarea,select{width:100%;padding: s.$space-sm;border:1px solid s.$border;border-radius: s.$radius-sm;background:transparent;color:inherit}
+
+/* Utility */
+.grid{display:grid;gap: s.$space-md}

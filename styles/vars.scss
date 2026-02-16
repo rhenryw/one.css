@@ -1,0 +1,38 @@
+@use 'settings' as s;
+@use 'sass:color' as color;
+
+/* CSS custom properties for runtime theming.  */
+:root{
+  --bg: #{s.$bg};
+  --text: #{s.$text};
+  --muted: #{s.$muted};
+  --link: #{s.$link};
+  --accent: #{s.$accent};
+  --accent-400: #{color.adjust(s.$accent, $lightness: 12%)};
+  --accent-200: #{color.adjust(s.$accent, $lightness: 8%)};
+  --accent-contrast: #{s.$accent-contrast};
+  --border: #{s.$border};
+  --surface: #{s.$surface};
+
+  /* spacing tokens (optional runtime access) */
+  --space-xs: #{s.$space-xs};
+  --space-sm: #{s.$space-sm};
+  --space-md: #{s.$space-md};
+  --space-lg: #{s.$space-lg};
+  --radius-sm: #{s.$radius-sm};
+  --radius-md: #{s.$radius-md};
+}
+
+/* dark theme variables applied when `.dark` is present on <html> */
+.dark{
+  --bg: #0b1220;
+  --text: #e6eef8;
+  --muted: #94a3b8;
+  --link: #7cc7ff;
+  --accent: #7cc7ff;
+  --accent-400: #{color.adjust(#7cc7ff, $lightness: 12%)};
+  --accent-200: #{color.adjust(#7cc7ff, $lightness: 8%)};
+  --accent-contrast: #06202a;
+  --border: #12202b;
+  --surface: #07111a;
+}

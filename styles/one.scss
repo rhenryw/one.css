@@ -1,0 +1,7 @@
+@use 'settings' as s;
+@use 'vars';
+@use 'base';
+@use 'components';
+@use 'forms';
+
+/* Single-file entry — compiles the full stylesheet with CSS custom properties for theming. */

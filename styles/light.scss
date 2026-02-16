@@ -1,0 +1,21 @@
+// Light theme — configure the settings module then use shared partials
+@use 'settings' with (
+	$bg: #ffffff,
+	$text: #0f1724,
+	$muted: #6b7280,
+	$link: #0b5fff,
+	$accent: #0b5fff,
+	$accent-contrast: #ffffff,
+	$border: #e6e9ee,
+	$surface: #f8fafc
+);
+
+@use 'base';
+@use 'forms';
+
+/* page-level helpers */
+.site-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.theme-toggle{align-self:flex-end}
+
+/* Pico-like small tweaks */
+blockquote{border-left:4px solid settings.$border;padding:.5rem 1rem;color:settings.$muted;background:transparent}

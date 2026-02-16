@@ -1,0 +1,35 @@
+/* Additional form niceties */
+@use 'settings' as s;
+
+/* Keep forms a comfortable width and avoid full-bleed inputs */
+form{
+	max-width: 720px;
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Increase vertical rhythm between top-level form children so elements don't touch */
+form > * + *{ margin-top: s.$space-lg }
+
+/* Tone down fieldset surface and use theme border color */
+fieldset{
+	border: 1px solid var(--border, #{s.$border});
+	background: transparent;
+	padding: s.$space-md;
+	border-radius: s.$radius-md;
+	margin: 1rem 0;
+}
+
+legend{ font-weight:600; padding:0 .5rem }
+
+/* Make inline rows of inputs share space but keep gaps */
+.form-row{ display:flex; gap: s.$space-md }
+.form-row > *{ flex:1 }
+
+/* Give inputs placed inside labels a small top gap so label text and control don't touch */
+/* Only add top gap for textual controls — leave checkboxes/radios inline */
+label > input[type="text"], label > input[type="email"], label > input[type="tel"], label > input[type="password"],
+label > textarea, label > select{
+	display:block; margin-top: .35rem
+}
