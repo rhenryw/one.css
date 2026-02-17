@@ -10,7 +10,7 @@ just use
 ```
 before the closing `</head>` tag in your html
 
-Or download it from [releases](https://github.com/rhenryw/one.css/releases/download/latest/one.css) (click to download) and then link it as
+Or download it from [releases](https://github.com/rhenryw/one.css/releases/download/latest/one.min.css) (click to download) and then link it as
 ```html
 <link rel="stylesheet" href="path/to/one.css">
 ```
