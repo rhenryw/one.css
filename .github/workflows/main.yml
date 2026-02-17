@@ -16,14 +16,11 @@ jobs:
           persist-credentials: true  
 
       - name: Install Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          export PATH="$HOME/.bun/bin:$PATH"
-          bun --version
-
-      - name: Install dependencies
-        run: bun i
-
+        run: curl -fsSL https://bun.sh/install | bash
+          
+      - name: Add Bun to PATH
+        run: echo "$HOME/.bun/bin" >> $GITHUB_PATH
+          
       - name: Run build
         run: bun run build
 
