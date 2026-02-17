@@ -23,15 +23,21 @@ jobs:
         run: npm install -g sass
 
       - name: Build CSS
-        run: sass styles/one.scss dist/one.css --no-source-map
+        run: |
+          # Build standard version
+          sass styles/one.scss dist/one.css --no-source-map
+          # Build minified version
+          sass styles/one.scss dist/one.min.css --style=compressed --no-source-map
 
       - name: Create or Update "latest" Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: latest
           name: Latest Build
-          body: Automated build of one.css from main branch.
-          files: dist/one.css
+          body: Automated build of one.css and one.min.css from main branch.
+          files: |
+            dist/one.css
+            dist/one.min.css
           make_latest: true
           prerelease: false
           draft: false
