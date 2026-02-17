@@ -684,3 +684,111 @@ details.dropdown > summary + ul li a:hover{ background: rgba(0,0,0,0.03) }
 }
 .theme-switch input:checked + .track{ background: var(--accent) }
 .theme-switch input:checked + .track .knob{ left: calc(var(--width) - var(--knob) - 4px) }
+
+.option-cards {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.option-card {
+  flex: 1;
+  min-width: 120px;
+  position: relative;
+  cursor: pointer;
+}
+
+.option-card input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.option-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--border-radius);
+  background: var(--surface);
+  transition: all var(--transition);
+}
+
+.option-card input:checked + .option-content {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.option-card:hover .option-content {
+  border-color: var(--accent);
+}
+
+.option-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.option-meta {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  background: var(--surface);
+  transition: all var(--transition);
+}
+
+.toggle-label:hover {
+  border-color: var(--accent);
+}
+
+.extras-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.color-picker-wrapper {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.color-picker-wrapper:hover {
+  border-color: var(--accent);
+}
+
+.color-picker-wrapper input[type="color"] {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}

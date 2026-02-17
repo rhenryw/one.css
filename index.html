@@ -1,10 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" one-color="sky">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>one.css — Demo</title>
   <link rel="stylesheet" href="dist/one.css">
+  <style>
+    /* Custom theme preview - these get applied via JS based on one-color attribute */
+  </style>
 </head>
 <body>
   <div class="container">
@@ -18,21 +21,66 @@
           <a href="#demo">Demo</a>
         </nav>
       </div>
-      <div style="display:flex;gap:.6rem;align-items:center">
+      <div style="display:flex;gap:.5rem;align-items:center">
         <button id="bg-grid-btn" class="btn btn--ghost" title="Grid background">Grid</button>
         <button id="bg-dots-btn" class="btn btn--ghost" title="Dots background">Dots</button>
-        <label class="theme-switch" title="Toggle theme">
-          <input id="toggle-theme" type="checkbox">
-          <span class="track"><span class="knob"></span></span>
-        </label>
+        <button id="theme-toggle" class="btn btn--ghost" title="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
       </div>
     </header>
 
+    <!-- Color palette bar -->
+    <div class="color-bar">
+      <div class="color-bar-inner">
+        <button class="color-swatch" data-color="sky" style="background:#38bdf8" title="Sky"></button>
+        <button class="color-swatch" data-color="jade" style="background:#10b981" title="Jade"></button>
+        <button class="color-swatch" data-color="rose" style="background:#f43f5e" title="Rose"></button>
+        <button class="color-swatch" data-color="amber" style="background:#f59e0b" title="Amber"></button>
+        <button class="color-swatch" data-color="violet" style="background:#8b5cf6" title="Violet"></button>
+        <button class="color-swatch" data-color="emerald" style="background:#34d399" title="Emerald"></button>
+        <button class="color-swatch" data-color="pink" style="background:#ec4899" title="Pink"></button>
+        <button class="color-swatch" data-color="blue" style="background:#3b82f6" title="Blue"></button>
+      </div>
+    </div>
+
+    <style>
+      .color-bar {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: .5rem 0;
+      }
+      .color-bar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        gap: .5rem;
+        justify-content: center;
+      }
+      .color-swatch {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: transform .15s, box-shadow .15s;
+      }
+      .color-swatch:hover {
+        transform: scale(1.15);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+      .color-swatch.active {
+        border-color: var(--color);
+      }
+    </style>
+
     <section class="card">
       <h2>Hero / Intro</h2>
-      <p class="muted">A tiny, classless stylesheet with light & dark themes, now with nicer components and subtle animations.</p>
+      <p>A tiny, classless stylesheet with light & dark themes and custom accent colors.</p>
+      <p><strong>Custom colors:</strong> Add <code>one-color="jade"</code> or <code>one-color="#ff0000"</code> to the <code>&lt;html&gt;</code> tag, or use the color bar above.</p>
       <div class="row" style="margin-top:1rem">
-  <button class="btn btn--pulse">Primary</button>
+        <button class="btn btn--pulse">Primary</button>
         <button class="btn btn--outline">Outline</button>
         <button class="btn btn--ghost">Ghost</button>
         <button class="btn btn--large">Large</button>
@@ -53,43 +101,43 @@
         </div>
       </div>
 
-      <h3 style="margin-top:1.25rem">Extras (badges, avatars, breadcrumb, pagination, dropdown, tooltips, toasts, modal, range, switch)</h3>
-      <div class="row" style="gap:.8rem;align-items:center;margin-top:.6rem">
+      <h3 style="margin-top:1.25rem">Components</h3>
+      <div class="row" style="gap:1rem;margin-top:.75rem">
         <div style="flex:1">
           <p><span class="badge">New</span> <span class="badge badge--muted">Beta</span></p>
-          <p style="margin-top:.6rem">
+          <p style="margin-top:.5rem">
             <span class="avatar">HW</span>
-            <span class="avatar avatar--sm" style="margin-left:.6rem">JR</span>
-            <span class="avatar avatar--lg" style="margin-left:.6rem"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop" alt="avatar"></span>
+            <span class="avatar avatar--sm" style="margin-left:.5rem">JR</span>
+            <span class="avatar avatar--lg" style="margin-left:.5rem"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop" alt="avatar"></span>
           </p>
         </div>
         <div style="flex:1">
           <ul class="breadcrumb"><li><a href="#">Home</a></li><li><a href="#">Docs</a></li><li>Components</li></ul>
-          <nav aria-label="Pagination" style="margin-top:.6rem"><ul class="pagination"><li><a href="#">Prev</a></li><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#" aria-current="page">3</a></li><li><a href="#">Next</a></li></ul></nav>
+          <nav aria-label="Pagination" style="margin-top:.5rem"><ul class="pagination"><li><a href="#">Prev</a></li><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#" aria-current="page">3</a></li><li><a href="#">Next</a></li></ul></nav>
         </div>
         <div style="flex:1">
           <details class="dropdown">
-            <summary class="btn btn--ghost">Options</summary>
+            <summary class="btn btn--ghost">Dropdown</summary>
             <ul>
               <li><a href="#">First</a></li>
               <li><a href="#">Second</a></li>
               <li><a href="#">Third</a></li>
             </ul>
           </details>
-          <button data-tooltip="I am a tooltip" class="btn btn--ghost" style="margin-left:.6rem">Hover</button>
+          <button data-tooltip="Tooltip text" class="btn btn--ghost" style="margin-left:.5rem">Tooltip</button>
         </div>
       </div>
 
-      <div class="row" style="margin-top:1rem;gap:1rem;align-items:center">
+      <div class="row" style="margin-top:1rem;gap:1rem">
         <div style="flex:1">
-          <button id="show-toast" class="btn btn--outline">Show toast</button>
-          <button id="open-modal" class="btn btn--ghost" style="margin-left:.6rem">Open modal</button>
+          <button id="show-toast" class="btn btn--outline">Toast</button>
+          <button id="open-modal" class="btn btn--ghost" style="margin-left:.5rem">Modal</button>
         </div>
         <div style="flex:1">
           <label style="display:block">Range <input id="demo-range" type="range" min="0" max="100" value="40"></label>
         </div>
         <div style="flex:1">
-          <label style="display:inline-flex;gap:.6rem;align-items:center">Accessible switch<div id="demo-switch" role="switch" tabindex="0" aria-checked="false"></div></label>
+          <label style="display:inline-flex;gap:.5rem;align-items:center">Switch <div id="demo-switch" role="switch" tabindex="0" aria-checked="false"></div></label>
         </div>
       </div>
     </section>
@@ -151,15 +199,58 @@
         </div>
         <label>Message<textarea rows="4"></textarea></label>
         <fieldset>
-          <legend>Options</legend>
-          <label><input type="checkbox"> Subscribe</label>
-          <label><input type="radio" name="plan"> Basic</label>
-          <label><input type="radio" name="plan"> Pro</label>
+          <legend>Selection</legend>
+          <div class="option-cards">
+            <label class="option-card">
+              <input type="radio" name="plan" checked>
+              <span class="option-content">
+                <span class="option-title">Basic</span>
+                <span class="option-meta">$9/mo</span>
+              </span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="plan">
+              <span class="option-content">
+                <span class="option-title">Pro</span>
+                <span class="option-meta">$19/mo</span>
+              </span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="plan">
+              <span class="option-content">
+                <span class="option-title">Enterprise</span>
+                <span class="option-meta">$49/mo</span>
+              </span>
+            </label>
+          </div>
+          <label class="toggle-label">
+            <input type="checkbox" role="switch" checked>
+            <span>Subscribe to newsletter</span>
+          </label>
         </fieldset>
         <div style="margin-top:1rem">
-          <input class="btn btn--celebrate" type="submit" value="Send">
+          <input class="btn" type="submit" value="Send">
         </div>
       </form>
+    </section>
+
+    <section>
+      <h2>Classless - Just Raw HTML</h2>
+      <p>No classes needed - just write semantic HTML and it just works.</p>
+      
+      <main>
+        <header><h1>Main Title</h1></header>
+        <article>
+          <h2>Article Title</h2>
+          <p>This is a paragraph with <strong>bold</strong> and <em>italic</em> text.</p>
+          <p>Here's a <a href="#">link</a> and some <code>inline code</code>.</p>
+        </article>
+        <aside>
+          <h3>Sidebar</h3>
+          <p>Aside content.</p>
+        </aside>
+        <footer><small>Page footer</small></footer>
+      </main>
     </section>
 
     <section>
@@ -197,11 +288,12 @@
 
   <script>
     (function(){
-      const checkbox = document.getElementById('toggle-theme');
+      const themeBtn = document.getElementById('theme-toggle');
+      const themeIcon = themeBtn.querySelector('.theme-icon');
 
       function setTheme(dark){
         document.documentElement.classList.toggle('dark', !!dark);
-        checkbox.checked = !!dark;
+        themeIcon.textContent = dark ? '☀️' : '🌙';
         try{ localStorage.setItem('theme', !!dark ? 'dark' : 'light'); }catch(e){}
       }
 
@@ -210,7 +302,125 @@
       if(stored){ setTheme(stored === 'dark'); }
       else { setTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); }
 
-      checkbox.addEventListener('change', ()=> setTheme(checkbox.checked));
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        setTheme(!isDark);
+      });
+
+      // Custom accent color via one-color attribute or color picker
+      const colorNames = {
+        sky: '#38bdf8', jade: '#10b981', rose: '#f43f5e', amber: '#f59e0b', 
+        violet: '#8b5cf6', emerald: '#34d399', orange: '#fb923c', 
+        pink: '#ec4899', cyan: '#06b6d4', lime: '#84cc16', red: '#ef4444',
+        blue: '#3b82f6', purple: '#a855f7', teal: '#14b8a6'
+      };
+      
+      function setAccentColor(color) {
+        const isDark = document.documentElement.classList.contains('dark');
+        let accent;
+        
+        if (colorNames[color]) {
+          accent = colorNames[color];
+        } else if (color.startsWith('#')) {
+          accent = color;
+        } else {
+          accent = '#38bdf8';
+        }
+        
+        // Generate all accent variations
+        const rgb = hexToRgb(accent);
+        const accentFocus = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4)`;
+        const accentContrast = isDark ? '#0a0a0a' : '#ffffff';
+        
+        // Calculate lighter/darker for hover states
+        const hsl = hexToHsl(accent);
+        const accentHover = hsl.l > 50 ? darken(accent, 15) : lighten(accent, 15);
+        const accent200 = hsl.l > 50 ? darken(accent, 8) : lighten(accent, 8);
+        const accent400 = hsl.l > 50 ? darken(accent, 12) : lighten(accent, 12);
+        
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--accent-hover', accentHover);
+        document.documentElement.style.setProperty('--accent-focus', accentFocus);
+        document.documentElement.style.setProperty('--accent-contrast', accentContrast);
+        document.documentElement.style.setProperty('--accent-200', accent200);
+        document.documentElement.style.setProperty('--accent-400', accent400);
+        document.documentElement.style.setProperty('--link', accent);
+        
+        // Update swatch active state
+        document.querySelectorAll('.color-swatch').forEach(s => {
+          s.classList.toggle('active', s.dataset.color === color || 
+            (colorNames[color] && s.style.background.includes(colorNames[color].slice(1)));
+        });
+        
+        // Save preference
+        try { localStorage.setItem('accent', accent); } catch(e) {}
+      }
+      
+      function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : { r: 56, g: 189, b: 248 };
+      }
+      
+      function hexToHsl(hex) {
+        const rgb = hexToRgb(hex);
+        let r = rgb.r / 255, g = rgb.g / 255, b = rgb.b / 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+        if (max === min) { h = s = 0; } else {
+          const d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch(max) {
+            case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+            case g: h = ((b - r) / d + 2) / 6; break;
+            case b: h = ((r - g) / d + 4) / 6; break;
+          }
+        }
+        return { h: h * 360, s: s * 100, l: l * 100 };
+      }
+      
+      function darken(hex, percent) {
+        const rgb = hexToRgb(hex);
+        const r = Math.max(0, Math.floor(rgb.r * (1 - percent / 100)));
+        const g = Math.max(0, Math.floor(rgb.g * (1 - percent / 100)));
+        const b = Math.max(0, Math.floor(rgb.b * (1 - percent / 100)));
+        return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+      }
+      
+      function lighten(hex, percent) {
+        const rgb = hexToRgb(hex);
+        const r = Math.min(255, Math.floor(rgb.r * (1 + percent / 100)));
+        const g = Math.min(255, Math.floor(rgb.g * (1 + percent / 100)));
+        const b = Math.min(255, Math.floor(rgb.b * (1 + percent / 100)));
+        return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+      }
+        
+        // Save preference
+        try { localStorage.setItem('accent', accent); } catch(e) {}
+      }
+      
+      // Initialize from one-color attribute or localStorage
+      (function initAccent() {
+        const html = document.documentElement;
+        const attrColor = html.getAttribute('one-color');
+        const stored = (function(){ try{ return localStorage.getItem('accent') }catch(e){ return null } })();
+        const color = attrColor || stored || 'sky';
+        setAccentColor(color);
+        if (attrColor) html.removeAttribute('one-color');
+      })();
+      
+      // Color swatch handlers
+      document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', () => {
+          const color = swatch.dataset.color;
+          setAccentColor(color);
+          document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+          swatch.classList.add('active');
+        });
+      });
 
       // Style native <meter> elements using a CSS variable (overrides native green)
       function updateMeters(){
@@ -241,45 +451,7 @@
         container.classList.remove('bg-grid');
       });
 
-      // Confetti (small DOM-based burst)
-      function rand(min,max){ return Math.random()*(max-min)+min }
-      function launchConfetti(x,y,count=18){
-        const colors = [getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#0b5fff', getComputedStyle(document.documentElement).getPropertyValue('--accent-200').trim() || '#62a7ff', '#FFD166', '#FF6B6B', '#9B8CFF'];
-        for(let i=0;i<count;i++){
-          const el = document.createElement('div');
-          el.className = 'confetti-piece';
-          el.style.left = (x + rand(-24,24)) + 'px';
-          el.style.top = (y + rand(-8,8)) + 'px';
-          el.style.background = colors[Math.floor(rand(0,colors.length))];
-          el.style.width = Math.floor(rand(6,12)) + 'px';
-          el.style.height = Math.floor(rand(8,14)) + 'px';
-          el.style.transform = `translateX(${rand(-60,60)}px) rotate(${rand(0,360)}deg)`;
-          el.style.animationDuration = (700 + Math.floor(rand(0,600))) + 'ms';
-          document.body.appendChild(el);
-          el.addEventListener('animationend', ()=> el.remove());
-        }
-      }
-
-      // attach confetti to celebrate buttons and form submit
-      document.querySelectorAll('.btn--celebrate').forEach(b=>{
-        b.addEventListener('click', (ev)=>{
-          const r = b.getBoundingClientRect();
-          launchConfetti(r.left + r.width/2, r.top + r.height/2, 22);
-        });
-      });
-
-      // intercept demo form submit to show confetti
-      const demoForm = document.querySelector('form');
-      if(demoForm){
-        demoForm.addEventListener('submit', e=>{
-          e.preventDefault();
-          const btn = demoForm.querySelector('.btn--celebrate');
-          const r = btn.getBoundingClientRect();
-          launchConfetti(r.left + r.width/2, r.top + r.height/2, 40);
-        });
-      }
-
-      /* --- Extras demo JS --- */
+      /* --- Interactive demos --- */
       // Toasts
       const toastViewport = document.createElement('div');
       toastViewport.className = 'toast-viewport';
