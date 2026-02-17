@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>one.css Documentation</title>
+    <link rel="stylesheet" href="../dist/one.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">one.css <span>v1.0</span></div>
+        <nav>
+            <a href="index.html" class="active">Getting Started</a>
+            <a href="colors.html">Colors & Theming</a>
+            <a href="components.html">Components</a>
+            <a href="forms.html">Forms</a>
+            <a href="layout.html">Layout</a>
+            <a href="demo.html">Demo</a>
+        </nav>
+        <div style="margin-top:auto">
+            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
+            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h1>Getting Started</h1>
+        <p class="lead">one.css is a tiny, classless stylesheet with light & dark themes and custom accent colors.</p>
+
+        <hr>
+
+        <h2>Installation</h2>
+        <p>You can install one.css via npm or use a CDN.</p>
+
+        <h3>Directly</h3>
+        <pre><code class="language-html">&lt;link rel="stylesheet" href="one.css"&gt;</code></pre>
+
+        <h3>CDN</h3>
+        <pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.min.css"&gt;</code></pre>
+
+        <hr>
+
+        <h2>Usage</h2>
+        <p>Simply include the stylesheet in your HTML. There are no build steps required if you use the distribution
+            file.</p>
+
+        <h3>Basic Template</h3>
+        <pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;My Awesome Site&lt;/title&gt;
+    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.min.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;About&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;Start building your site with semantic HTML.&lt;/p&gt;
+      &lt;button&gt;Click me&lt;/button&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <hr>
+
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Classless:</strong> Works with raw, semantic HTML.</li>
+            <li><strong>Theming:</strong> Automatic light/dark mode support.</li>
+            <li><strong>Customizable:</strong> Single CSS variable <code>--accent</code> controls the entire theme
+                color.</li>
+            <li><strong>Responsive:</strong> Mobile-first typography and layout utilities.</li>
+            <li><strong>Icons:</strong> Uses standard SVGs or emojis, no icon font dependency.</li>
+        </ul>
+
+    </main>
+
+
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="docs.js"></script>
+</body>
+
+</html>

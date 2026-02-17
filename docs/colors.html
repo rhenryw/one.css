@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors & Theming - one.css</title>
+    <link rel="stylesheet" href="../dist/one.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">one.css <span>v1.0</span></div>
+        <nav>
+            <a href="index.html">Getting Started</a>
+            <a href="colors.html" class="active">Colors & Theming</a>
+            <a href="components.html">Components</a>
+            <a href="forms.html">Forms</a>
+            <a href="layout.html">Layout</a>
+            <a href="demo.html">Demo</a>
+        </nav>
+        <div style="margin-top:auto">
+            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
+            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h1>Colors & Theming</h1>
+        <p class="lead">Customize the look and feel with a single CSS variable.</p>
+
+        <hr>
+
+        <h2>Accent Color</h2>
+        <p>The entire theme is built around the <code>--accent</code> CSS variable. By default, it's a calm blue.</p>
+        <p>You can change it globally or locally by setting the variable in your CSS or inline styles.</p>
+
+        <h3>Global Override</h3>
+        <pre><code class="language-css">:root {
+  --accent: #10b981; /* Emerald green */
+}</code></pre>
+
+        <h3>Inline Override</h3>
+        <pre><code class="language-html">&lt;html style="--accent: #f43f5e"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+
+        <div
+            style="margin-top:var(--space-md); padding:var(--space-md); border:1px solid var(--border); border-radius:var(--border-radius)">
+            <p><strong>Preview:</strong></p>
+            <button style="--accent: #f43f5e">Rose Button</button>
+            <button style="--accent: #10b981">Emerald Button</button>
+            <button style="--accent: #8b5cf6">Violet Button</button>
+        </div>
+
+        <hr>
+
+        <h2>Dark Mode</h2>
+        <p>one.css includes a built-in dark theme. It respects the user's system preference automatically via
+            <code>prefers-color-scheme</code>.
+        </p>
+        <p>To force a specific theme, add the <code>data-theme</code> attribute to the <code>&lt;html&gt;</code> tag.
+        </p>
+
+        <h3>Force Dark Theme</h3>
+        <pre><code class="language-html">&lt;html data-theme="dark"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+
+        <h3>Force Light Theme</h3>
+        <pre><code class="language-html">&lt;html data-theme="light"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+
+        <h3>JavaScript Toggle</h3>
+        <p>You can toggle the theme with a simple script:</p>
+        <pre><code class="language-javascript">document.documentElement.setAttribute('data-theme', 'dark');
+// To revert to system/light:
+document.documentElement.removeAttribute('data-theme');</code></pre>
+        <div style="margin-top:var(--space-md)">
+            <button onclick="document.documentElement.setAttribute('data-theme', 'dark')">Try Dark</button>
+            <button class="outline" onclick="document.documentElement.removeAttribute('data-theme')">Try Light</button>
+        </div>
+
+    </main>
+
+
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="docs.js"></script>
+</body>
+
+</html>

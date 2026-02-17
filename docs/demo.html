@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - one.css</title>
+    <link rel="stylesheet" href="../dist/one.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-twilight.min.css">
+    <style>
+        .color-bar {
+            background: var(--surface);
+            border-bottom: var(--border-width) solid var(--border);
+            padding: var(--space-sm) 0;
+            margin-bottom: var(--space-md);
+            border-radius: var(--border-radius);
+        }
+
+        .color-bar-inner {
+            padding: 0 var(--space-md);
+            display: flex;
+            gap: var(--space-xs);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 32px;
+            height: 24px;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform .15s, box-shadow .15s;
+            padding: 0;
+            min-width: 0;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.1) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-swatch.active {
+            border-color: var(--color);
+            box-shadow: 0 0 0 2px var(--bg);
+        }
+
+        .toast-viewport {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: var(--surface);
+            color: var(--color);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.3s ease-out;
+            pointer-events: auto;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(2px);
+        }
+
+        .modal {
+            background: var(--card-bg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">one.css <span>v1.0</span></div>
+        <nav>
+            <a href="index.html">Getting Started</a>
+            <a href="colors.html">Colors & Theming</a>
+            <a href="components.html">Components</a>
+            <a href="forms.html">Forms</a>
+            <a href="layout.html">Layout</a>
+            <a href="demo.html" class="active">Demo</a>
+        </nav>
+        <div style="margin-top:auto">
+            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
+            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h1>Full Demo</h1>
+        <p class="lead">Interactive preview of all elements and theming capabilities.</p>
+
+        <!-- Color palette bar -->
+        <div class="color-bar">
+            <div class="color-bar-inner">
+                <button class="color-swatch" data-color="sky" style="background:#38bdf8" title="Sky"></button>
+                <button class="color-swatch" data-color="jade" style="background:#10b981" title="Jade"></button>
+                <button class="color-swatch" data-color="rose" style="background:#f43f5e" title="Rose"></button>
+                <button class="color-swatch" data-color="amber" style="background:#f59e0b" title="Amber"></button>
+                <button class="color-swatch" data-color="violet" style="background:#8b5cf6" title="Violet"></button>
+                <button class="color-swatch" data-color="emerald" style="background:#34d399" title="Emerald"></button>
+                <button class="color-swatch" data-color="pink" style="background:#ec4899" title="Pink"></button>
+                <button class="color-swatch" data-color="blue" style="background:#3b82f6" title="Blue"></button>
+            </div>
+        </div>
+
+        <section class="card">
+            <h2>Hero / Intro</h2>
+            <p>A tiny, classless stylesheet with light &amp; dark themes and custom accent colors.</p>
+            <p><strong>Custom colors:</strong> Click the swatches above.</p>
+            <div class="row" style="margin-top:var(--space-md)">
+                <button>Primary</button>
+                <button class="outline">Outline</button>
+                <button class="ghost">Ghost</button>
+                <button class="large">Large</button>
+            </div>
+        </section>
+
+        <section id="components">
+            <h2>Cards &amp; Layout</h2>
+            <div class="row">
+                <div class="card" style="flex:1">
+                    <h3>Card title</h3>
+                    <p>Cards have subtle elevation and lift on hover.</p>
+                    <button class="small outline">Action</button>
+                </div>
+                <div class="card" style="flex:1">
+                    <h3>Another card</h3>
+                    <p>Use cards for grouping related content.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top:var(--space-lg)">Components</h3>
+            <div class="row" style="gap:var(--space-md);margin-top:var(--space-sm)">
+                <div style="flex:1">
+                    <p><span class="badge">New</span> <span class="badge badge--muted">Beta</span></p>
+                    <p style="margin-top:var(--space-xs)">
+                        <span class="avatar">HW</span>
+                        <span class="avatar avatar--sm" style="margin-left:var(--space-xs)">JR</span>
+                        <span class="avatar avatar--lg" style="margin-left:var(--space-xs)"><img
+                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop"
+                                alt="avatar"></span>
+                    </p>
+                </div>
+                <div style="flex:1">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Docs</a></li>
+                        <li>Components</li>
+                    </ul>
+                    <nav aria-label="Pagination" style="margin-top:var(--space-xs)">
+                        <ul class="pagination">
+                            <li><a href="#">Prev</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#" aria-current="page">3</a></li>
+                            <li><a href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div style="flex:1">
+                    <details class="dropdown">
+                        <summary>Dropdown</summary>
+                        <ul>
+                            <li><a href="#">First</a></li>
+                            <li><a href="#">Second</a></li>
+                            <li><a href="#">Third</a></li>
+                        </ul>
+                    </details>
+                    <button data-tooltip="Tooltip text" class="ghost"
+                        style="margin-left:var(--space-xs)">Tooltip</button>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:var(--space-md);gap:var(--space-md)">
+                <div style="flex:1">
+                    <button id="show-toast" class="outline">Toast</button>
+                    <button id="open-modal" class="ghost" style="margin-left:var(--space-xs)">Modal</button>
+                </div>
+                <div style="flex:1">
+                    <label style="display:block">Range <input id="demo-range" type="range" min="0" max="100"
+                            value="40"></label>
+                </div>
+                <div style="flex:1">
+                    <label style="display:inline-flex;gap:var(--space-xs);align-items:center">Switch <input
+                            type="checkbox" role="switch"></label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Media</h2>
+            <figure>
+                <div class="embed"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="demo"
+                        allowfullscreen></iframe></div>
+                <figcaption>Responsive iframe embed</figcaption>
+            </figure>
+            <blockquote>Blockquote example — classless styling should make this readable.</blockquote>
+        </section>
+
+        <section>
+            <h2>Details, Progress, and Meter</h2>
+            <details>
+                <summary>More info</summary>
+                <p>Hidden content inside details/summary.</p>
+            </details>
+
+            <h3>Progress</h3>
+            <progress value="45" max="100"></progress>
+
+            <h3>Fancy Checkbox &amp; Inline Toggle</h3>
+            <label style="display:inline-flex;align-items:center;gap:var(--space-sm)">
+                <input class="ui-checkbox" type="checkbox">
+                <span>Checkbox with animated check</span>
+            </label>
+
+            <h3>Meter</h3>
+            <meter value="0.6">60%</meter>
+        </section>
+
+        <section>
+            <h2>Layout &amp; Alignment</h2>
+            <div class="row" style="gap:var(--space-md);align-items:start">
+                <div class="card" style="width:30%">
+                    <p class="text-left">Left aligned block (.text-left)</p>
+                </div>
+                <div class="card align-center" style="width:30%">
+                    <p class="text-center">Centered card (.align-center .text-center)</p>
+                </div>
+                <div class="card" style="width:30%">
+                    <p class="text-right align-right">Right aligned text (.text-right)</p>
+                </div>
+            </div>
+
+            <hr>
+            <p class="text-center muted">— separator —</p>
+        </section>
+
+        <section id="forms">
+            <h2>Forms</h2>
+            <form>
+                <label>Name<input type="text" placeholder="Your name"></label>
+                <div class="row">
+                    <label style="flex:1">Email<input type="email" placeholder="you@example.com"></label>
+                    <label style="flex:1">Phone<input type="tel" placeholder="(555) 555-5555"></label>
+                </div>
+                <label>Message<textarea rows="4"></textarea></label>
+                <fieldset>
+                    <legend>Selection</legend>
+                    <div class="choice-cards">
+                        <label class="choice-card">
+                            <input type="radio" name="plan" checked>
+                            <span class="choice-content">
+                                <span class="choice-title">Basic</span>
+                                <span class="choice-price">$9/mo</span>
+                            </span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="plan">
+                            <span class="choice-content">
+                                <span class="choice-title">Pro</span>
+                                <span class="choice-price">$19/mo</span>
+                            </span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="plan">
+                            <span class="choice-content">
+                                <span class="choice-title">Enterprise</span>
+                                <span class="choice-price">$49/mo</span>
+                            </span>
+                        </label>
+                    </div>
+                    <label class="toggle-row">
+                        <input type="checkbox" role="switch" checked>
+                        <span>Subscribe to newsletter</span>
+                    </label>
+                </fieldset>
+                <div style="margin-top:var(--space-md)">
+                    <input type="submit" value="Send">
+                </div>
+            </form>
+        </section>
+
+        <section>
+            <h2>Classless - Just Raw HTML</h2>
+            <p>No classes needed - just write semantic HTML and it just works.</p>
+
+            <div style="border:1px solid var(--border); padding:var(--space-md); border-radius:var(--radius-md)">
+                <header>
+                    <h1>Main Title</h1>
+                </header>
+                <article>
+                    <h2>Article Title</h2>
+                    <p>This is a paragraph with <strong>bold</strong> and <em>italic</em> text.</p>
+                    <p>Here's a <a href="#">link</a> and some <code>inline code</code>.</p>
+                </article>
+                <aside>
+                    <h3>Sidebar</h3>
+                    <p>Aside content.</p>
+                </aside>
+                <footer><small>Page footer</small></footer>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="docs.js"></script>
+    <script>
+        // Demo logic (swatches, modal, etc.)
+        (function () {
+            // Custom accent color via color swatches
+            const colorNames = {
+                sky: '#38bdf8', jade: '#10b981', rose: '#f43f5e', amber: '#f59e0b',
+                violet: '#8b5cf6', emerald: '#34d399', orange: '#fb923c',
+                pink: '#ec4899', cyan: '#06b6d4', lime: '#84cc16', red: '#ef4444',
+                blue: '#3b82f6', purple: '#a855f7', teal: '#14b8a6'
+            };
+
+            function setAccentColor(color) {
+                let accent;
+                if (colorNames[color]) {
+                    accent = colorNames[color];
+                } else if (color.startsWith('#')) {
+                    accent = color;
+                } else {
+                    accent = '#38bdf8';
+                }
+
+                document.documentElement.style.setProperty('--accent', accent);
+                // Note: --accent-hover and --accent-focus are now dynamic in CSS via color-mix()
+                // so we don't need to manually update them in JS unless we want to override them specifically.
+                // But --link and others use var(--accent) directly now.
+
+                document.querySelectorAll('.color-swatch').forEach(s => {
+                    s.classList.toggle('active', s.dataset.color === color);
+                });
+
+                try { localStorage.setItem('accent-color', color); } catch (e) { }
+            }
+
+            // Initialize accent
+            const stored = (function () { try { return localStorage.getItem('accent-color') } catch (e) { return null } })();
+            if (stored) { setAccentColor(stored); }
+
+            document.querySelectorAll('.color-swatch').forEach(swatch => {
+                swatch.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setAccentColor(swatch.dataset.color);
+                });
+            });
+
+            // Meters
+            function updateMeters() {
+                document.querySelectorAll('meter').forEach(m => {
+                    const val = parseFloat(m.getAttribute('value')) || 0;
+                    const max = parseFloat(m.getAttribute('max')) || 1;
+                    const pct = Math.round((val / max) * 100);
+                    m.style.setProperty('--meter-pct', pct + '%');
+                });
+            }
+            updateMeters();
+
+            // Progress animate
+            const prog = document.querySelector('progress');
+            if (prog) {
+                let v = +prog.value;
+                setInterval(() => { v = (v + 5) % (prog.max + 1); prog.value = v; }, 1500);
+            }
+
+            // Toasts
+            const toastViewport = document.createElement('div');
+            toastViewport.className = 'toast-viewport';
+            document.body.appendChild(toastViewport);
+            const toastBtn = document.getElementById('show-toast');
+            if (toastBtn) {
+                toastBtn.addEventListener('click', () => {
+                    const t = document.createElement('div');
+                    t.className = 'toast';
+                    t.textContent = 'Saved — your changes were applied.';
+                    toastViewport.appendChild(t);
+                    setTimeout(() => t.remove(), 3600);
+                });
+            }
+
+            // Modal
+            const demoModal = document.createElement('div');
+            demoModal.id = 'demo-modal';
+            demoModal.className = 'modal-overlay';
+            demoModal.style.display = 'none';
+            demoModal.innerHTML = `<div class="modal"><button class="modal-close" aria-label="Close">×</button><h3>Modal title</h3><p>This is a simple modal demo.</p><div style="margin-top:var(--space-md)"><button id="modal-ok-btn">Okay</button></div></div>`;
+            document.body.appendChild(demoModal);
+
+            demoModal.querySelector('.modal-close').addEventListener('click', () => demoModal.style.display = 'none');
+            demoModal.querySelector('#modal-ok-btn').addEventListener('click', () => demoModal.style.display = 'none');
+            demoModal.addEventListener('click', (ev) => { if (ev.target === demoModal) demoModal.style.display = 'none' });
+
+            const openModalBtn = document.getElementById('open-modal');
+            if (openModalBtn) openModalBtn.addEventListener('click', () => demoModal.style.display = 'flex');
+
+            // Range
+            const range = document.getElementById('demo-range');
+            if (range) {
+                range.addEventListener('input', () => {
+                    range.title = range.value + '%';
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

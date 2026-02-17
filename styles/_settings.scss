@@ -27,6 +27,7 @@ $nav-element-spacing-horizontal: 0.5rem !default;
 $nav-link-spacing-vertical: 0.5rem !default;
 $nav-link-spacing-horizontal: 0.5rem !default;
 
+// ── Spacing scale ──
 $space-xxs: 0.25rem !default;
 $space-xs: 0.5rem !default;
 $space-sm: 0.75rem !default;
@@ -34,19 +35,23 @@ $space-md: 1rem !default;
 $space-lg: 1.5rem !default;
 $space-xl: 2rem !default;
 
+// ── Radius scale ──
 $radius-sm: 6px !default;
 $radius-md: 10px !default;
 $radius-lg: 12px !default;
 
+// ── Transitions ──
 $trans-fast: 0.12s !default;
 $trans-md: 0.18s !default;
 
+// ── Layout ──
 $container-max: 80rem !default;
 
+// ── Colors (light defaults) ──
 $bg: #ffffff !default;
 $color: #373c44 !default;
 $muted: #646b79 !default;
-$muted-border: rgb(231, 234, 239.5) !default;
+$muted-border: #e7eaf0 !default;
 $link: #0172ad !default;
 $accent: #0172ad !default;
 $accent-hover: #015887 !default;
@@ -63,27 +68,27 @@ $h4-color: #4d535e !default;
 $h5-color: #5c6370 !default;
 $h6-color: #646b79 !default;
 
-$mark-bg: rgb(252.5, 230.5, 191.5) !default;
+$mark-bg: #fce7c0 !default;
 $mark-color: #0f1114 !default;
-$ins-color: rgb(28.5, 105.5, 84) !default;
-$del-color: rgb(136, 56.5, 53) !default;
+$ins-color: #1d6a54 !default;
+$del-color: #883935 !default;
 
-$code-bg: rgb(243, 244.5, 246.75) !default;
+$code-bg: #f3f5f7 !default;
 $code-color: #646b79 !default;
 $code-kbd-bg: $color !default;
 $code-kbd-color: $bg !default;
 
-$form-element-bg: rgb(251, 251.5, 252.25) !default;
+$form-element-bg: #fbfbfc !default;
 $form-element-border: #cfd5e2 !default;
 $form-element-color: #23262c !default;
 $form-element-placeholder: $muted !default;
 $form-element-active-bg: #fff !default;
 $form-element-active-border: $accent !default;
 $form-element-disabled-opacity: 0.5 !default;
-$form-element-invalid: rgb(183.5, 105.5, 106.5) !default;
-$form-element-invalid-active: rgb(200.25, 79.25, 72.25) !default;
-$form-element-valid: rgb(76, 154.5, 137.5) !default;
-$form-element-valid-active: rgb(39, 152.75, 118.75) !default;
+$form-element-invalid: #b86a6b !default;
+$form-element-invalid-active: #c84f48 !default;
+$form-element-valid: #4c9b8a !default;
+$form-element-valid-active: #279977 !default;
 
 $switch-bg: #bfc7d9 !default;
 $switch-checked-bg: $accent !default;
@@ -102,7 +107,7 @@ $accordion-open-summary: $muted !default;
 
 $card-bg: $bg !default;
 $card-border: $muted-border !default;
-$card-sectioning-bg: rgb(251, 251.5, 252.25) !default;
+$card-sectioning-bg: #fbfbfc !default;
 
 $dropdown-bg: #fff !default;
 $dropdown-border: #eff1f4 !default;
@@ -116,18 +121,3 @@ $tooltip-color: #fff !default;
 
 $table-border: $muted-border !default;
 $table-striped-bg: rgba(111, 120, 135, 0.0375) !default;
-
-$spacing-xxs: 0.25rem !default;
-$spacing-xs: 0.5rem !default;
-$spacing-sm: 0.75rem !default;
-$spacing-md: 1rem !default;
-$spacing-lg: 1.5rem !default;
-$spacing-xl: 2rem !default;
-
-$radius-sm: 6px !default;
-$radius-md: 10px !default;
-$radius-lg: 12px !default;
-$container-max: 80rem !default;
-
-$trans-fast: 0.12s !default;
-$trans-md: 0.18s !default;

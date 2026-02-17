@@ -3,14 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "sass styles/one.scss dist/one.css --no-source-map",
-    "test:visual": "node scripts/visual-test.js",
-    "check:contrast": "node scripts/contrast-check.js"
+    "build": "sass styles/one.scss dist/one.css --no-source-map"
   },
   "devDependencies": {
-    "sass": "^1.80.0",
-    "puppeteer": "^21.0.0",
-    "pngjs": "^7.0.0",
-    "pixelmatch": "^5.3.0"
+    "sass": "^1.80.0"
   }
 }

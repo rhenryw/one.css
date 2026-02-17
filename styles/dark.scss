@@ -1,6 +1,5 @@
 // Dark theme — configure the settings module then use shared partials
-@use 'settings' with (
-	$bg: #0a0a0a,
+@use 'settings' with ($bg: #0a0a0a,
 	$color: #c2c7d0,
 	$muted: #8b95a5,
 	$muted-border: #2a2a2a,
@@ -59,10 +58,8 @@
 	$tooltip-bg: #e0e3e7,
 	$tooltip-color: #0a0a0a,
 	$table-border: #2a2a2a,
-	$table-striped-bg: rgba(255, 255, 255, 0.03)
-);
+	$table-striped-bg: rgba(255, 255, 255, 0.03));
 
 @use 'base';
 @use 'forms';
-
 @use 'components';

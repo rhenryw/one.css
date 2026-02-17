@@ -2,6 +2,13 @@
 
 Minimal classless stylesheet inspired by pico.css. This repo contains SCSS sources for a light and a dark variant and a tiny demo page.
 
+
+just use 
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.min.css">
+```
+
 Build
 ```
 # install dependencies (using bun)

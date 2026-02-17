@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - one.css</title>
+    <link rel="stylesheet" href="../dist/one.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-twilight.min.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">one.css <span>v1.0</span></div>
+        <nav>
+            <a href="index.html">Getting Started</a>
+            <a href="colors.html">Colors & Theming</a>
+            <a href="components.html">Components</a>
+            <a href="forms.html" class="active">Forms</a>
+            <a href="layout.html">Layout</a>
+            <a href="demo.html">Demo</a>
+        </nav>
+        <div style="margin-top:auto">
+            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
+            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h1>Forms</h1>
+        <p class="lead">Form elements are styled for accessibility and usability by default.</p>
+
+        <hr>
+
+        <h2>Text Inputs</h2>
+        <form>
+            <label>Name
+                <input type="text" placeholder="John Doe">
+            </label>
+            <div class="row">
+                <label style="flex:1">Email
+                    <input type="email" placeholder="john@example.com">
+                </label>
+                <label style="flex:1">Password
+                    <input type="password" placeholder="••••••••">
+                </label>
+            </div>
+            <label>Message
+                <textarea rows="3" placeholder="Type your message..."></textarea>
+            </label>
+        </form>
+
+        <pre><code class="language-html">&lt;label&gt;Name
+  &lt;input type="text" placeholder="Name"&gt;
+&lt;/label&gt;
+&lt;label&gt;Message
+  &lt;textarea&gt;&lt;/textarea&gt;
+&lt;/label&gt;</code></pre>
+
+        <hr>
+
+        <h2>Select</h2>
+        <label>Category
+            <select>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+        </label>
+        <pre><code class="language-html">&lt;select&gt;
+  &lt;option&gt;Option 1&lt;/option&gt;
+  &lt;option&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+        <h3>Multiple Select</h3>
+        <label>Tags
+            <select multiple>
+                <option value="1">HTML</option>
+                <option value="2">CSS</option>
+                <option value="3">JavaScript</option>
+                <option value="4">React</option>
+                <option value="5">Vue</option>
+            </select>
+            <small class="muted">Hold Ctrl/Cmd to select multiple</small>
+        </label>
+        <pre><code class="language-html">&lt;select multiple&gt;
+  &lt;option&gt;Item 1&lt;/option&gt;
+  ...
+&lt;/select&gt;</code></pre>
+
+        <hr>
+
+        <h2>Checkboxes & Radios</h2>
+        <div class="row" style="margin-bottom:var(--space-md)">
+            <label><input type="checkbox" checked> Checkbox</label>
+            <label><input type="checkbox"> Unchecked</label>
+        </div>
+        <div class="row" style="margin-bottom:var(--space-md)">
+            <label><input type="radio" name="demo-radio" checked> Radio 1</label>
+            <label><input type="radio" name="demo-radio"> Radio 2</label>
+        </div>
+
+        <pre><code class="language-html">&lt;label&gt;&lt;input type="checkbox" checked&gt; Checkbox&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="g"&gt; Radio&lt;/label&gt;</code></pre>
+
+        <h3>Toggle Switch</h3>
+        <label class="toggle-row">
+            <input type="checkbox" role="switch" checked>
+            <span>Activate Feature</span>
+        </label>
+        <pre><code class="language-html">&lt;input type="checkbox" role="switch" checked&gt;</code></pre>
+
+        <h3>Fancy Animated Checkbox</h3>
+        <label style="display:inline-flex;align-items:center;gap:0.5rem">
+            <input class="ui-checkbox" type="checkbox">
+            <span>Animated Checkbox</span>
+        </label>
+        <pre><code class="language-html">&lt;input class="ui-checkbox" type="checkbox"&gt;</code></pre>
+
+        <hr>
+
+        <h2>Range & Progress</h2>
+        <label>Volume
+            <input type="range" min="0" max="100" value="70">
+        </label>
+        <br>
+        <label>Progress
+            <progress value="70" max="100"></progress>
+        </label>
+        <br>
+        <label>Meter
+            <meter value="0.6" min="0" max="1">60%</meter>
+        </label>
+
+        <pre><code class="language-html">&lt;input type="range" value="70"&gt;
+&lt;progress value="70" max="100"&gt;&lt;/progress&gt;
+&lt;meter value="0.6"&gt;60%&lt;/meter&gt;</code></pre>
+
+    </main>
+
+
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="docs.js"></script>
+</body>
+
+</html>

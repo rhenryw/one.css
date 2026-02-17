@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout - one.css</title>
+    <link rel="stylesheet" href="../dist/one.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-twilight.min.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">one.css <span>v1.0</span></div>
+        <nav>
+            <a href="index.html">Getting Started</a>
+            <a href="colors.html">Colors & Theming</a>
+            <a href="components.html">Components</a>
+            <a href="forms.html">Forms</a>
+            <a href="layout.html" class="active">Layout</a>
+            <a href="demo.html">Demo</a>
+        </nav>
+        <div style="margin-top:auto">
+            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
+            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h1>Layout & Typography</h1>
+        <p class="lead">one.css handles basic typography and layout needs without complex grid systems.</p>
+
+        <hr>
+
+        <h2>Grid & Flex</h2>
+        <p>Simple utility classes for laying out content.</p>
+
+        <h3>Row</h3>
+        <p>Use <code>.row</code> to create a flex container with gap.</p>
+        <div class="row" style="background:var(--surface); padding:1rem; border:1px dashed var(--border)">
+            <div style="background:var(--accent); color:var(--accent-contrast); padding:1rem; flex:1">Col 1</div>
+            <div style="background:var(--accent); color:var(--accent-contrast); padding:1rem; flex:1">Col 2</div>
+            <div style="background:var(--accent); color:var(--accent-contrast); padding:1rem; flex:1">Col 3</div>
+        </div>
+        <pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;div style="flex:1"&gt;Col 1&lt;/div&gt;
+  &lt;div style="flex:1"&gt;Col 2&lt;/div&gt;
+  &lt;div style="flex:1"&gt;Col 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>Stack</h3>
+        <p>Use <code>.stack</code> for vertical layouts with gap.</p>
+        <div class="stack" style="background:var(--surface); padding:1rem; border:1px dashed var(--border)">
+            <div style="padding:0.5rem; background:var(--bg); border:1px solid var(--border)">Item 1</div>
+            <div style="padding:0.5rem; background:var(--bg); border:1px solid var(--border)">Item 2</div>
+        </div>
+        <pre><code class="language-html">&lt;div class="stack"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <hr>
+
+        <h2>Tables</h2>
+        <p>Responsive, striped tables by default.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alice Smith</td>
+                    <td>Developer</td>
+                    <td>Active</td>
+                </tr>
+                <tr>
+                    <td>Bob Jones</td>
+                    <td>Designer</td>
+                    <td>Inactive</td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;...&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Alice&lt;/td&gt;...&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+        <hr>
+
+        <h2>Typography</h2>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <p>Paragraph text. <strong>Bold text</strong>. <em>Italic text</em>. <small>Small text</small>.</p>
+        <blockquote>Blockquote example.</blockquote>
+        <pre><code class="language-html">&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;p&gt;Paragraph...&lt;/p&gt;
+&lt;blockquote&gt;Quote...&lt;/blockquote&gt;</code></pre>
+
+    </main>
+
+
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="docs.js"></script>
+</body>
+
+</html>

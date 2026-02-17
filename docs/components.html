@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components - one.css</title>
+    <link rel="stylesheet" href="../dist/one.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-twilight.min.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <!-- Sidebar content reused -->
+        <div class="logo">one.css <span>v1.0</span></div>
+        <nav>
+            <a href="index.html">Getting Started</a>
+            <a href="colors.html">Colors & Theming</a>
+            <a href="components.html" class="active">Components</a>
+            <a href="forms.html">Forms</a>
+            <a href="layout.html">Layout</a>
+            <a href="demo.html">Demo</a>
+        </nav>
+        <div style="margin-top:auto">
+            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
+            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h1>Components</h1>
+        <p class="lead">one.css provides a set of lightweight, classless components that handle most common UI needs.
+        </p>
+
+        <hr>
+
+        <h2>Buttons</h2>
+        <p>Buttons adapt automatically to your accent color. Use standard <code>&lt;button&gt;</code> tags.</p>
+        <div class="row" style="margin-bottom:var(--space-md)">
+            <button>Primary</button>
+            <button class="outline">Outline</button>
+            <button class="ghost">Ghost</button>
+            <button disabled>Disabled</button>
+        </div>
+        <pre><code class="language-html">&lt;button&gt;Primary&lt;/button&gt;
+&lt;button class="outline"&gt;Outline&lt;/button&gt;
+&lt;button class="ghost"&gt;Ghost&lt;/button&gt;
+&lt;button disabled&gt;Disabled&lt;/button&gt;</code></pre>
+
+        <h3>Sizes & Variations</h3>
+        <p>Add <code>.large</code> or <code>.small</code> for different sizes.</p>
+        <div class="row" style="margin-bottom:var(--space-md)">
+            <button class="large">Large Button</button>
+            <button class="small">Small Button</button>
+        </div>
+        <pre><code class="language-html">&lt;button class="large"&gt;Large&lt;/button&gt;
+&lt;button class="small"&gt;Small&lt;/button&gt;</code></pre>
+
+        <hr>
+
+        <h2>Cards</h2>
+        <p>Use the <code>.card</code> class to group related content. It provides padding, elevation, and rounded
+            corners.</p>
+        <div class="card" style="max-width:400px">
+            <h3>Card Title</h3>
+            <p>This is a card component. It's great for displaying content in a structured way.</p>
+            <button class="small outline">Action</button>
+        </div>
+        <pre><code class="language-html">&lt;div class="card"&gt;
+  &lt;h3&gt;Card Title&lt;/h3&gt;
+  &lt;p&gt;Card content goes here.&lt;/p&gt;
+  &lt;button class="outline"&gt;Action&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+        <hr>
+
+        <h2>Details / Accordion</h2>
+        <p>Standard <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements are styled automatically.</p>
+        <details>
+            <summary>Click to expand</summary>
+            <p>Hidden content inside the details element.</p>
+        </details>
+        <pre><code class="language-html">&lt;details&gt;
+  &lt;summary&gt;Click to expand&lt;/summary&gt;
+  &lt;p&gt;Hidden content...&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+        <hr>
+
+        <h2>Dropdown</h2>
+        <p>Use <code>.dropdown</code> class on a details element to create a dropdown menu.</p>
+        <div style="height:150px">
+            <details class="dropdown">
+                <summary>Options</summary>
+                <ul>
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#" style="color:var(--del-color)">Sign Out</a></li>
+                </ul>
+            </details>
+        </div>
+        <pre><code class="language-html">&lt;details class="dropdown"&gt;
+  &lt;summary&gt;Options&lt;/summary&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/details&gt;</code></pre>
+
+        <hr>
+
+        <h2>Modal</h2>
+        <p>Simple modal overlays using semantic HTML and minimal JS.</p>
+        <button id="open-modal-demo">Open Modal</button>
+
+        <!-- Hidden modal structure for demo -->
+        <div id="demo-modal" class="modal-overlay" style="display:none">
+            <div class="modal">
+                <button class="modal-close"
+                    onclick="document.getElementById('demo-modal').style.display='none'">×</button>
+                <h3>Modal Title</h3>
+                <p>This is a modal window.</p>
+                <div style="margin-top:1rem; text-align:right">
+                    <button class="ghost"
+                        onclick="document.getElementById('demo-modal').style.display='none'">Cancel</button>
+                    <button onclick="document.getElementById('demo-modal').style.display='none'">Okay</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById('open-modal-demo').onclick = () => document.getElementById('demo-modal').style.display = 'flex';
+            document.getElementById('demo-modal').onclick = (e) => { if (e.target === e.currentTarget) e.currentTarget.style.display = 'none'; }
+        </script>
+
+        <pre><code class="language-html">&lt;!-- Modal Overlay --&gt;
+&lt;div class="modal-overlay" id="my-modal"&gt;
+  &lt;div class="modal"&gt;
+    &lt;button class="modal-close" onclick="closeModal()"&gt;×&lt;/button&gt;
+    &lt;h3&gt;Title&lt;/h3&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+    &lt;button onclick="closeModal()"&gt;Okay&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  .modal-overlay { display: none; /* Toggle via JS */ }
+&lt;/style&gt;</code></pre>
+
+    </main>
+
+
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="docs.js"></script>
+</body>
+
+</html>
