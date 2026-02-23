@@ -2,6 +2,7 @@
 
 Minimal classless stylesheet inspired by pico.css. This repo contains SCSS sources for a light and a dark variant and a tiny demo page.
 
+[![](https://data.jsdelivr.com/v1/package/gh/rhenryw/cdns/badge?style=rounded)](https://www.jsdelivr.com/package/gh/rhenryw/one.css)
 
 just use 
 
