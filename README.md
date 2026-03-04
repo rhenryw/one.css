@@ -1,6 +1,10 @@
-# one.css
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rhenryw/one.css/main/img/logo.svg" 
+       alt="one.css logo" 
+       width="30%">
+</p>
 
-Minimal classless stylesheet inspired by pico.css. This repo contains SCSS sources for a light and a dark variant and a tiny demo page.
+Micro design system framework inspired by pico.css and tailwind. This repo contains SCSS sources for a light and a dark variant and a tiny demo page.
 
 [![](https://data.jsdelivr.com/v1/package/gh/rhenryw/one.css/badge?style=rounded)](https://www.jsdelivr.com/package/gh/rhenryw/one.css)
 
