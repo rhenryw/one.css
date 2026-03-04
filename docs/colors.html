@@ -12,21 +12,7 @@
 
 <body>
 
-    <aside class="sidebar">
-        <div class="logo"><img src="../img/logo.svg" alt="one.css" height="24"></div>
-        <nav>
-            <a href="index.html">Getting Started</a>
-            <a href="colors.html" class="active">Colors & Theming</a>
-            <a href="components.html">Components</a>
-            <a href="forms.html">Forms</a>
-            <a href="layout.html">Layout</a>
-            <a href="demo.html">Demo</a>
-        </nav>
-        <div style="margin-top:auto">
-            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
-            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
-        </div>
-    </aside>
+    <aside id="docs-sidebar" class="sidebar"></aside>
 
     <main class="content">
         <h1>Colors & Theming</h1>
@@ -84,6 +70,16 @@ document.documentElement.removeAttribute('data-theme');</code></pre>
             <button onclick="document.documentElement.setAttribute('data-theme', 'dark')">Try Dark</button>
             <button class="outline" onclick="document.documentElement.removeAttribute('data-theme')">Try Light</button>
         </div>
+
+        <hr>
+
+        <h2>Light Bundle Options</h2>
+        <p>For drag-and-drop HTML and tiny payloads, use the lightweight build:</p>
+        <ul>
+            <li><code>dist/one.light.css</code> for readable source in development.</li>
+            <li><code>dist/one.light.min.css</code> for production and smallest transfer size.</li>
+        </ul>
+        <pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.light.min.css"&gt;</code></pre>
 
     </main>
 

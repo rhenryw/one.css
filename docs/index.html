@@ -12,21 +12,7 @@
 
 <body>
 
-    <aside class="sidebar">
-        <div class="logo"><img src="../img/logo.svg" alt="one.css" height="24"></div>
-        <nav>
-            <a href="index.html" class="active">Getting Started</a>
-            <a href="colors.html">Colors & Theming</a>
-            <a href="components.html">Components</a>
-            <a href="forms.html">Forms</a>
-            <a href="layout.html">Layout</a>
-            <a href="demo.html">Demo</a>
-        </nav>
-        <div style="margin-top:auto">
-            <button id="copy-page-md" class="small ghost">Copy Page as Markdown</button>
-            <button id="theme-toggle" class="small outline" style="margin-top:0.5rem">Toggle Theme</button>
-        </div>
-    </aside>
+    <aside id="docs-sidebar" class="sidebar"></aside>
 
     <main class="content">
         <h1>Getting Started</h1>
@@ -40,8 +26,35 @@
         <h3>Directly</h3>
         <pre><code class="language-html">&lt;link rel="stylesheet" href="one.css"&gt;</code></pre>
 
-        <h3>CDN</h3>
+        <h3>CDN (full bundle)</h3>
         <pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.min.css"&gt;</code></pre>
+
+        <h3>CDN (ultra-light classless bundle)</h3>
+        <pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.light.min.css"&gt;</code></pre>
+        <p>Use <code>one.light.min.css</code> for drag-and-drop HTML when you want the smallest payload and only core classless styling + light/dark theme support.</p>
+
+        <h3>Bundle Comparison</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Bundle</th>
+              <th>Includes</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>one.min.css</code></td>
+              <td>Full system: classless base + components + advanced form styling</td>
+              <td>Apps/sites that use the full one.css feature set</td>
+            </tr>
+            <tr>
+              <td><code>one.light.min.css</code></td>
+              <td>Ultra-light classless core + light/dark theming</td>
+              <td>Drag-and-drop HTML and minimal payload pages</td>
+            </tr>
+          </tbody>
+        </table>
 
         <hr>
 

@@ -1502,7 +1502,7 @@ meter::-moz-meter-bar {
   display: inline-block;
   width: 1em;
   height: 1em;
-  background-image: url("data:image/svg+xml,%3Csvg fill='none' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E g %7B animation: rotate 2s linear infinite; transform-origin: center center; %7D circle %7B stroke-dasharray: 75,100; stroke-dashoffset: -5; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; %7D @keyframes rotate %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg); %7D @keyframes dash %7B 0%25 %7B stroke-dasharray: 1,100; stroke-dashoffset: 0; %7D 50%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -17.5; %7D 100%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -62; %7D %7D %3C/style%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='rgb(136, 145, 164)' stroke-width='4' /%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cstyle%3E%40keyframes%20r%7Bto%7Btransform%3Arotate%28360deg%29%7D%7D%40keyframes%20d%7B50%25%7Bstroke-dasharray%3A45%2C100%3Bstroke-dashoffset%3A-18%7Dto%7Bstroke-dasharray%3A45%2C100%3Bstroke-dashoffset%3A-62%7D%7D%3C%2Fstyle%3E%3Cg%20style%3D%22animation%3Ar%202s%20linear%20infinite%3Btransform-origin%3Acenter%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%20style%3D%22stroke-dasharray%3A1%2C100%3Bstroke-dashoffset%3A0%3Banimation%3Ad%201.5s%20ease-in-out%20infinite%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   background-size: 1em auto;
   background-repeat: no-repeat;
   content: "";
