@@ -9,6 +9,12 @@ just use
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.min.css">
 ```
+
+or, if you want classless (`3kb` build)
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rhenryw/one.css@main/dist/one.light.min.css">
+```
 before the closing `</head>` tag in your html
 
 Or download it from [releases](https://github.com/rhenryw/one.css/releases/download/latest/one.min.css) (click to download) and then link it as
