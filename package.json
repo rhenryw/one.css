@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "sass styles/one.scss dist/one.css --no-source-map"
+    "build": "npm run build:full && npm run build:light",
+    "build:full": "sass styles/one.scss dist/one.css --no-source-map",
+    "build:light": "sass styles/one.light.scss dist/one.light.css --no-source-map && sass styles/one.light.scss dist/one.light.min.css --style=compressed --no-source-map"
   },
   "devDependencies": {
     "sass": "^1.80.0"

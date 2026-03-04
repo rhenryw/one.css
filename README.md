@@ -20,6 +20,8 @@ bun run build
 
 Outputs
 - `dist/one.css` — single stylesheet with CSS custom properties for light/dark themes
+- `dist/one.light.css` — classless + light/dark variable bundle (no component classes)
+- `dist/one.light.min.css` — minified version of the light bundle for drag-and-drop HTML use
 
 Open `index.html` to view the demo. Theme switching is now done by toggling the `.dark` class on `<html>` (the demo saves your preference).
 
